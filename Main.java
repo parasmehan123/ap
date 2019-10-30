@@ -8,10 +8,13 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    public static Stage statStage;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Parent root=FXMLLoader.load(getClass().getResource("LoadGame.fxml"));
+        statStage=primaryStage;
+        Parent root=FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
         primaryStage.setTitle("PlantsVsZombies");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

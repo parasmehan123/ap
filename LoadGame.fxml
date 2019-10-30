@@ -23,12 +23,7 @@
                         <TableColumn prefWidth="75.0" text="C2" />
                     </columns>
                 </TableView>
-            <Button ellipsisString="" layoutX="923.0" layoutY="926.0" mnemonicParsing="false" onKeyPressed="#continuePressed" prefHeight="74.0" prefWidth="181.0" style="-fx-background-color: transparent;" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="945.0" layoutY="883.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/continue.png" />
-               </image>
-            </ImageView>
+            <Button ellipsisString="" layoutX="1106.0" layoutY="883.0" mnemonicParsing="false" onKeyPressed="#continuePressed" prefHeight="183.0" prefWidth="181.0" style="-fx-background-color: transparent;" />
             </children></AnchorPane>
     </children>
 </StackPane>
