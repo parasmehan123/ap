@@ -1,17 +1,29 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
+
+    @FXML
+    private StackPane rootPane;
 
     @FXML
     private ImageView background,start_game,resume_game,instructions,leaderboard,exit;
@@ -41,32 +53,51 @@ public class MainMenuController implements Initializable {
     }
 
     @FXML
-    private void startNewGamePressed()
-    {
+    private void startNewGamePressed(ActionEvent event) throws IOException {
 
+        //change this######################################################################################################################################################################
+        Parent root=FXMLLoader.load(getClass().getResource("Instructions.fxml"));
+        //change this######################################################################################################################################################################
+        Scene sc=new Scene(root);
+        Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Main_window.setScene(sc);
+        Main_window.show();
     }
 
     @FXML
-    private void resumeGamePressed()
+    private void resumeGamePressed(ActionEvent event) throws IOException
     {
-
+        Parent root=FXMLLoader.load(getClass().getResource("LoadGame.fxml"));
+        Scene sc=new Scene(root);
+        Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Main_window.setScene(sc);
+        Main_window.show();
     }
 
     @FXML
-    private void instructionsPressed()
+    private void instructionsPressed(ActionEvent event) throws IOException
     {
-
+        Parent root=FXMLLoader.load(getClass().getResource("Instructions.fxml"));
+        Scene sc=new Scene(root);
+        Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Main_window.setScene(sc);
+        Main_window.show();
     }
 
     @FXML
-    private void leaderPressed()
+    private void leaderPressed(ActionEvent event) throws IOException
     {
-
+        Parent root=FXMLLoader.load(getClass().getResource("LeaderBoard.fxml"));
+        Scene sc=new Scene(root);
+        Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Main_window.setScene(sc);
+        Main_window.show();
     }
 
     @FXML
-    private void exitPressed()
+    private void exitPressed(ActionEvent event) throws IOException
     {
+        ((Stage) ((Node)event.getSource()).getScene().getWindow()).close();
 
     }
 }

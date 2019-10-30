@@ -16,7 +16,7 @@
          </image></ImageView>
       <AnchorPane prefHeight="1113.0" prefWidth="1900.0">
          <children>
-            <Button fx:id="back" ellipsisString="" layoutX="69.0" layoutY="858.0" mnemonicParsing="false" onKeyPressed="#backPressed" prefHeight="176.0" prefWidth="143.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="back" ellipsisString="" layoutX="69.0" layoutY="858.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="176.0" prefWidth="143.0" style="-fx-background-color: transparent;" />
             <TableView fx:id="table" layoutX="226.0" layoutY="373.0" prefHeight="446.0" prefWidth="594.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="C1" />

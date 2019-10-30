@@ -17,7 +17,7 @@
       </ImageView>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button ellipsisString="" layoutX="62.0" layoutY="879.0" mnemonicParsing="false" onKeyPressed="#backPressed" prefHeight="159.0" prefWidth="150.0" style="-fx-background-color: transparent;" />
+            <Button ellipsisString="" layoutX="62.0" layoutY="879.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="159.0" prefWidth="150.0" style="-fx-background-color: transparent;" />
             <AnchorPane layoutX="231.0" layoutY="316.0" prefHeight="224.0" prefWidth="529.0">
                <children>
                   <Text layoutX="27.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1) Hello" wrappingWidth="214.7294921875">

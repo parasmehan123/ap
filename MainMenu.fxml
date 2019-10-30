@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainMenuController">
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainMenuController">
    <children>
       <ImageView fx:id="background" fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -17,7 +17,7 @@
          <children>
             <AnchorPane layoutX="134.0" layoutY="327.0" prefHeight="230.0" prefWidth="1501.0">
                <children>
-                  <Button ellipsisString="" layoutX="9.0" layoutY="39.0" mnemonicParsing="false" onKeyPressed="#startNewGamePressed" prefHeight="96.0" prefWidth="468.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" layoutX="9.0" layoutY="39.0" mnemonicParsing="false" onAction="#startNewGamePressed" prefHeight="96.0" prefWidth="468.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fx:id="start_game" fitHeight="110.0" fitWidth="450.0" pickOnBounds="true">
                            <image>
@@ -26,7 +26,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button ellipsisString="" layoutX="527.0" layoutY="49.0" mnemonicParsing="false" onKeyPressed="#resumeGamePressed" prefHeight="100.0" prefWidth="468.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" layoutX="527.0" layoutY="49.0" mnemonicParsing="false" onAction="#resumeGamePressed" prefHeight="100.0" prefWidth="468.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fx:id="resume_game" fitHeight="180.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -35,7 +35,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button ellipsisString="" layoutX="1024.0" layoutY="47.0" mnemonicParsing="false" onKeyPressed="#instructionsPressed" prefHeight="100.0" prefWidth="468.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" layoutX="1024.0" layoutY="47.0" mnemonicParsing="false" onAction="#instructionsPressed" prefHeight="100.0" prefWidth="468.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fx:id="instructions" fitHeight="180.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -48,7 +48,7 @@
             </AnchorPane>
             <AnchorPane layoutX="309.0" layoutY="695.0" prefHeight="200.0" prefWidth="978.0">
                <children>
-                  <Button ellipsisString="" layoutX="-7.0" layoutY="48.0" mnemonicParsing="false" onKeyPressed="#leaderPressed" prefHeight="94.0" prefWidth="468.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" layoutX="-7.0" layoutY="48.0" mnemonicParsing="false" onAction="#leaderPressed" prefHeight="94.0" prefWidth="468.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fx:id="leaderboard" fitHeight="180.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -57,9 +57,9 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button ellipsisString="" layoutX="594.0" layoutY="42.0" mnemonicParsing="false" prefHeight="109.0" prefWidth="468.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" layoutX="594.0" layoutY="42.0" mnemonicParsing="false" onAction="#exitPressed" prefHeight="109.0" prefWidth="468.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="exit" fitHeight="91.0" fitWidth="450.0" onKeyPressed="#exitPressed" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="exit" fitHeight="91.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/EXIT_BUTTON.png" />
                            </image>

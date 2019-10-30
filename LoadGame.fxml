@@ -16,14 +16,14 @@
             </image></ImageView>
         <AnchorPane prefHeight="1113.0" prefWidth="1900.0">
             <children>
-                <Button fx:id="back" ellipsisString="" layoutX="69.0" layoutY="858.0" mnemonicParsing="false" onKeyPressed="#backPressed" prefHeight="176.0" prefWidth="143.0" style="-fx-background-color: transparent;" />
+                <Button fx:id="back" ellipsisString="" layoutX="35.0" layoutY="885.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="151.0" prefWidth="165.0" style="-fx-background-color: transparent;" />
                 <TableView fx:id="table" layoutX="226.0" layoutY="373.0" prefHeight="446.0" prefWidth="594.0">
                     <columns>
                         <TableColumn prefWidth="75.0" text="C1" />
                         <TableColumn prefWidth="75.0" text="C2" />
                     </columns>
                 </TableView>
-            <Button ellipsisString="" layoutX="1106.0" layoutY="883.0" mnemonicParsing="false" onKeyPressed="#continuePressed" prefHeight="183.0" prefWidth="181.0" style="-fx-background-color: transparent;" />
+            <Button ellipsisString="" layoutX="1106.0" layoutY="883.0" mnemonicParsing="false" onAction="#continuePressed" prefHeight="167.0" prefWidth="181.0" style="-fx-background-color: transparent;" />
             </children></AnchorPane>
     </children>
 </StackPane>
