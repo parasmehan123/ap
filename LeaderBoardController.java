@@ -34,7 +34,7 @@ public class LeaderBoardController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try
         {
-            FileInputStream fn=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/LEADERBOARD.png");
+            FileInputStream fn=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/LEADERBOARD.png");
             background.setImage(new Image(fn));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
