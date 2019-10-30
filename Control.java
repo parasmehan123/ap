@@ -9,10 +9,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Ellipse;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.Polygon;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.*;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -39,12 +37,22 @@ public class Control implements Initializable {
     @FXML
     private Button but51,but52,but53,but54,but55,but56,but57,but58,but59,but61,but62,but63,but64,but65,but66,but67,but68,but69;
 
+    @FXML
+    private Rectangle rec1;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        TranslateTransition tr=new TranslateTransition(Duration.seconds(4),poly);
-        tr.setByX(1000);
-        tr.play();
+        try {
+            FileInputStream fn=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/Conehead_Zombie.gif");
+            rec1.setFill(new ImagePattern(new Image(fn)));
+            TranslateTransition tr=new TranslateTransition(Duration.seconds(4),rec1);
+            tr.setByX(-500);
+            tr.play();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
