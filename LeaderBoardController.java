@@ -39,13 +39,13 @@ public class LeaderBoardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try
-        {
-            FileInputStream fn=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/LEADERBOARD.png");
-            background.setImage(new Image(fn));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+//        try
+//        {
+//            FileInputStream fn=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/LEADERBOARD.png");
+//            background.setImage(new Image(fn));
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
         TableColumn rank=new TableColumn("Rank");
         rank.setCellValueFactory(new PropertyValueFactory<Player, Integer>("rank"));
 

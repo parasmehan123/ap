@@ -46,20 +46,20 @@
                   </Button>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="309.0" layoutY="695.0" prefHeight="200.0" prefWidth="978.0">
+            <AnchorPane layoutX="288.0" layoutY="546.0" prefHeight="364.0" prefWidth="1083.0">
                <children>
-                  <Button ellipsisString="" layoutX="-7.0" layoutY="48.0" mnemonicParsing="false" onAction="#leaderPressed" prefHeight="94.0" prefWidth="468.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" layoutX="-7.0" layoutY="48.0" mnemonicParsing="false" onAction="#leaderPressed" prefHeight="183.0" prefWidth="517.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="leaderboard" fitHeight="180.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="leaderboard" fitHeight="192.0" fitWidth="499.0" pickOnBounds="true">
                            <image>
                               <Image url="@images/LEADERBOARDS_BUTTON.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button ellipsisString="" layoutX="594.0" layoutY="42.0" mnemonicParsing="false" onAction="#exitPressed" prefHeight="109.0" prefWidth="468.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" layoutX="630.0" layoutY="61.0" mnemonicParsing="false" onAction="#exitPressed" prefHeight="168.0" prefWidth="449.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="exit" fitHeight="91.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="exit" fitHeight="91.0" fitWidth="371.0" pickOnBounds="true">
                            <image>
                               <Image url="@images/EXIT_BUTTON.png" />
                            </image>

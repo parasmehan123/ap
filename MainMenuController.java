@@ -30,24 +30,24 @@ public class MainMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        try {
-            FileInputStream fn1=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/MAIN_PAGE.png");
-            background.setImage(new Image(fn1));
-            FileInputStream fn2=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/START_NEW_GAME.png");
-            start_game.setImage(new Image(fn2));
-            FileInputStream fn3=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/RESUME_GAME.png");
-            resume_game.setImage(new Image(fn3));
-            FileInputStream fn4=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/INSTRUCTION_MAIN_BUTTON.png");
-            instructions.setImage(new Image(fn4));
-            FileInputStream fn5=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/LEADERBOARDS_BUTTON.png");
-            leaderboard.setImage(new Image(fn5));
-            FileInputStream fn6=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/EXIT_BUTTON.png");
-            exit.setImage(new Image(fn6));
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+//
+//        try {
+//            FileInputStream fn1=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/MAIN_PAGE.png");
+//            background.setImage(new Image(fn1));
+//            FileInputStream fn2=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/START_NEW_GAME.png");
+//            start_game.setImage(new Image(fn2));
+//            FileInputStream fn3=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/RESUME_GAME.png");
+//            resume_game.setImage(new Image(fn3));
+//            FileInputStream fn4=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/INSTRUCTION_MAIN_BUTTON.png");
+//            instructions.setImage(new Image(fn4));
+//            FileInputStream fn5=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/LEADERBOARDS_BUTTON.png");
+//            leaderboard.setImage(new Image(fn5));
+//            FileInputStream fn6=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/EXIT_BUTTON.png");
+//            exit.setImage(new Image(fn6));
+//
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
 
 
     }
@@ -55,9 +55,7 @@ public class MainMenuController implements Initializable {
     @FXML
     private void startNewGamePressed(ActionEvent event) throws IOException {
 
-        //change this######################################################################################################################################################################
-        Parent root=FXMLLoader.load(getClass().getResource("Instructions.fxml"));
-        //change this######################################################################################################################################################################
+        Parent root=FXMLLoader.load(getClass().getResource("Login.fxml"));
         Scene sc=new Scene(root);
         Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         Main_window.setScene(sc);

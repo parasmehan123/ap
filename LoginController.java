@@ -7,38 +7,34 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class InstructionsController implements Initializable {
-
-
-    @FXML
-    private ImageView background;
+public class LoginController implements Initializable {
 
     @FXML
-    private Button back;
-
+    private TextField username;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        try
-//        {
-//            FileInputStream fn=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/INSTRUCTION_PAGE.png");
-//            background.setImage(new Image(fn));
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
+
     }
 
+    @FXML
+    private void continuePressed(ActionEvent event) throws IOException
+    {
+        Parent root= FXMLLoader.load(getClass().getResource("Level.fxml"));
+        Scene sc=new Scene(root);
+        Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Main_window.setScene(sc);
+        Main_window.show();
+//        Player selected=(Player) table.getSelectionModel().getSelectedItem();
+//        System.out.println("Player with rank "+selected.getRank()+" selected.");
+    }
 
     @FXML
     private void backPressed(ActionEvent event) throws IOException

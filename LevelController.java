@@ -28,29 +28,29 @@ public class LevelController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try
-        {
-            FileInputStream fn1=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/LEVEL_PAGE.png");
-            background.setImage(new Image(fn1));
-            FileInputStream lev1=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/level1.png");
-            l1.setImage(new Image(lev1));
-            FileInputStream lev2=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/level2.png");
-            l2.setImage(new Image(lev2));
-            FileInputStream lev3=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/level3.png");
-            l3.setImage(new Image(lev3));
-            FileInputStream lev4=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/level4.png");
-            l4.setImage(new Image(lev4));
-            FileInputStream lev5=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/level5.png");
-            l5.setImage(new Image(lev5));
-            FileInputStream stop=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/stop.png");
-//            st2.setImage(new Image(stop));
-//            st3.setImage(new Image(stop));
-            st4.setImage(new Image(stop));
-//            st5.setImage(new Image(stop));
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+//        try
+//        {
+//            FileInputStream fn1=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/LEVEL_PAGE.png");
+//            background.setImage(new Image(fn1));
+//            FileInputStream lev1=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/level1.png");
+//            l1.setImage(new Image(lev1));
+//            FileInputStream lev2=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/level2.png");
+//            l2.setImage(new Image(lev2));
+//            FileInputStream lev3=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/level3.png");
+//            l3.setImage(new Image(lev3));
+//            FileInputStream lev4=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/level4.png");
+//            l4.setImage(new Image(lev4));
+//            FileInputStream lev5=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/level5.png");
+//            l5.setImage(new Image(lev5));
+//            FileInputStream stop=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/stop.png");
+////            st2.setImage(new Image(stop));
+////            st3.setImage(new Image(stop));
+//            st4.setImage(new Image(stop));
+////            st5.setImage(new Image(stop));
+//
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @FXML

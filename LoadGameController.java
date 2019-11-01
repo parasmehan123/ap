@@ -36,13 +36,13 @@ public class LoadGameController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        try
-        {
-            FileInputStream fn=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/SAVED_GAME.png");
-            background.setImage(new Image(fn));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+//        try
+//        {
+//            FileInputStream fn=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/SAVED_GAME.png");
+//            background.setImage(new Image(fn));
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
         TableColumn rank=new TableColumn("Rank");
         rank.setCellValueFactory(new PropertyValueFactory<Player, Integer>("rank"));
 
@@ -69,12 +69,6 @@ public class LoadGameController implements Initializable{
         table.setItems(list);
 
 
-    }
-
-    @FXML
-    private void backPressed()
-    {
-        System.out.println("Back Button Pressed!!");
     }
 
     @FXML
