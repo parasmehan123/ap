@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 
 <StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainMenuController">
@@ -15,27 +16,27 @@
       </ImageView>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <AnchorPane layoutX="134.0" layoutY="327.0" prefHeight="230.0" prefWidth="1501.0">
+            <HBox layoutX="268.0" layoutY="373.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button ellipsisString="" layoutX="9.0" layoutY="39.0" mnemonicParsing="false" onAction="#startNewGamePressed" prefHeight="96.0" prefWidth="468.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#startNewGamePressed" prefHeight="96.0" prefWidth="468.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="start_game" fitHeight="110.0" fitWidth="450.0" pickOnBounds="true">
+                        <ImageView fx:id="start_game" fitHeight="97.0" fitWidth="450.0" pickOnBounds="true">
                            <image>
                               <Image url="@images/START_NEW_GAME.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button ellipsisString="" layoutX="527.0" layoutY="49.0" mnemonicParsing="false" onAction="#resumeGamePressed" prefHeight="100.0" prefWidth="468.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#resumeGamePressed" prefHeight="116.0" prefWidth="342.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="resume_game" fitHeight="180.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="resume_game" fitHeight="67.0" fitWidth="327.0" pickOnBounds="true">
                            <image>
-                              <Image url="@images/RESUME_GAME.png" />
+                              <Image url="@images/load_game.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button ellipsisString="" layoutX="1024.0" layoutY="47.0" mnemonicParsing="false" onAction="#instructionsPressed" prefHeight="100.0" prefWidth="468.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#instructionsPressed" prefHeight="100.0" prefWidth="468.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fx:id="instructions" fitHeight="180.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -45,29 +46,38 @@
                      </graphic>
                   </Button>
                </children>
-            </AnchorPane>
-            <AnchorPane layoutX="288.0" layoutY="546.0" prefHeight="364.0" prefWidth="1083.0">
+            </HBox>
+            <HBox layoutX="386.0" layoutY="584.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button ellipsisString="" layoutX="-7.0" layoutY="48.0" mnemonicParsing="false" onAction="#leaderPressed" prefHeight="183.0" prefWidth="517.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#leaderPressed" prefHeight="183.0" prefWidth="517.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="leaderboard" fitHeight="192.0" fitWidth="499.0" pickOnBounds="true">
+                        <ImageView fx:id="leaderboard" fitHeight="167.0" fitWidth="499.0" pickOnBounds="true">
                            <image>
                               <Image url="@images/LEADERBOARDS_BUTTON.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button ellipsisString="" layoutX="630.0" layoutY="61.0" mnemonicParsing="false" onAction="#exitPressed" prefHeight="168.0" prefWidth="449.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#exitPressed" prefHeight="168.0" prefWidth="449.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="exit" fitHeight="91.0" fitWidth="371.0" pickOnBounds="true">
+                        <ImageView fx:id="exit" fitHeight="97.0" fitWidth="371.0" pickOnBounds="true">
                            <image>
                               <Image url="@images/EXIT_BUTTON.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#leaderPressed" prefHeight="183.0" prefWidth="517.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fx:id="chooselevel" fitHeight="87.0" fitWidth="499.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@images/choose_level.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
-            </AnchorPane>
+            </HBox>
          </children>
       </AnchorPane>
    </children>

@@ -201,7 +201,7 @@
                   </Button>
                   <Button ellipsisString="" mnemonicParsing="false" prefHeight="90.0" prefWidth="218.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fitHeight="64.0" fitWidth="200.0" pickOnBounds="true">
+                        <ImageView fx:id="exitgame" fitHeight="64.0" fitWidth="200.0" pickOnBounds="true">
                            <image>
                               <Image url="@images/EXIT_BUTTON.png" />
                            </image>

@@ -28,7 +28,7 @@ public class PlayGameController implements Initializable {
     private boolean ch=false,wal=false,peashooter=false,sunflower=false;
 
     @FXML
-    private ImageView zomb1,lm1,p1,suntoken,pea1,bk1,bk2,suncounter,pause;
+    private ImageView zomb1,lm1,p1,suntoken,pea1,bk1,bk2,suncounter,pause,exitgame;
 
     public static ImageView statzomb1,statlm1,statp1,statsuntoken,statpea1;
 
@@ -51,13 +51,15 @@ public class PlayGameController implements Initializable {
         statsuntoken=suntoken;
         statpea1=pea1;
 
-        FileInputStream fn= null;
+        FileInputStream fn1= null,fn2=null;
         try {
-            fn = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/circled-pause.png");
+            fn1 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/circled-pause.png");
+            fn2=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/EXIT_BUTTON.png");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        pause.setImage(new Image(fn));
+        pause.setImage(new Image(fn1));
+        exitgame.setImage(new Image(fn2));
 
 
     }

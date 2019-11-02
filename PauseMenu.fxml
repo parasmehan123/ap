@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PauseMenuController">
+   <children>
+      <ImageView fx:id="background" fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true">
+         <image>
+            <Image url="@images/PAUSE_MENU.png" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <VBox layoutX="615.0" layoutY="303.0" prefHeight="475.0" prefWidth="443.0">
+               <children>
+                  <Button ellipsisString="" mnemonicParsing="false" prefHeight="104.0" prefWidth="439.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fx:id="savegame" fitHeight="75.0" fitWidth="387.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/SAVE_GAME_BUTTON.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button ellipsisString="" mnemonicParsing="false" prefHeight="89.0" prefWidth="445.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fx:id="restartlevel" fitHeight="79.0" fitWidth="390.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/RESTART_LEVL.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button ellipsisString="" mnemonicParsing="false" prefHeight="88.0" prefWidth="438.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fx:id="resumegame" fitHeight="61.0" fitWidth="338.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/RESUME_GAME.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button ellipsisString="" mnemonicParsing="false" prefHeight="88.0" prefWidth="436.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fx:id="exitgame" fitHeight="59.0" fitWidth="269.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/EXIT_BUTTON.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

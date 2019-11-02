@@ -15,16 +15,17 @@ import javafx.util.Duration;
 
 import java.io.FileInputStream;
 
-public class Main extends Application {
+public class Main2 extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+
 
         Parent root=FXMLLoader.load(getClass().getResource("PlayGame.fxml"));
         primaryStage.setTitle("PlantsVsZombies");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-
         ImageView zomb1=PlayGameController.statzomb1,lm1=PlayGameController.statlm1;
         TranslateTransition tr=new TranslateTransition(Duration.seconds(25),zomb1);
         tr.setByX(-1300);
@@ -59,24 +60,6 @@ public class Main extends Application {
 
             });
         });
-
-
-//                AnchorPane main=PlayGameController.statmain;
-
-//        Circle c=new Circle();
-//        c.setRadius(27);
-//        c.setCenterX(675);
-//        c.setCenterY(583);
-//        c.setFill(Color.web("0x0c6b02",1));
-//        PlayGameController.statmain.getChildren().add(c);
-//        TranslateTransition tr2=new TranslateTransition(Duration.seconds(10),c);
-//        tr2.setByX(1000);
-//        tr2.play();
-
-
-
-
-
 
     }
 
