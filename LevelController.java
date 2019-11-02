@@ -54,9 +54,13 @@ public class LevelController implements Initializable{
     }
 
     @FXML
-    private void level1()
+    private void level1(ActionEvent event) throws IOException
     {
-        System.out.println("");
+        Parent root= FXMLLoader.load(getClass().getResource("PlayGame.fxml"));
+        Scene sc=new Scene(root);
+        Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Main_window.setScene(sc);
+        Main_window.show();
     }
 
     @FXML
