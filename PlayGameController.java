@@ -1,102 +1,93 @@
 package sample;
 
-import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
+import javafx.stage.Stage;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class PlayGameController implements Initializable {
 
+    private Stage stage;
+
+    @FXML
+    private ImageView pea1,cherry1,walnu1,sun1;
+
+    @FXML
+    private Text tex;
+
     @FXML
     private GridPane lawn;
 
-    private boolean ch=false,wal=false,peashooter=false,sunflower=false;
-
-    @FXML
-    private ImageView zomb1,lm1,p1,suntoken,pea1,bk1,bk2,suncounter,pause,exitgame;
-
-    public static ImageView statzomb1,statlm1,statp1,statsuntoken,statpea1;
-
-    @FXML
-    private AnchorPane main;
-
-    public static AnchorPane statmain;
+    public static boolean sunflag,peaflag,walnutflag,cherryflag;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ch=false;
-        wal=false;
-        peashooter=false;
-        sunflower=false;
-        System.out.println("hahahaha");
-        statmain=main;
-        statp1=p1;
-        statzomb1=zomb1;
-        statlm1=lm1;
-        statsuntoken=suntoken;
-        statpea1=pea1;
 
-        FileInputStream fn1= null,fn2=null;
-        //        try {
-        //            fn1 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/circled-pause.png");
-        //            fn2=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/EXIT_BUTTON.png");
-        //        } catch (FileNotFoundException e) {
-        //            e.printStackTrace();
-        //        }
-        pause.setImage(new Image(fn1));
-        exitgame.setImage(new Image(fn2));
+        stage=Main2.statstage;
 
+        sunflag=false;
+        peaflag=false;
+        walnutflag=false;
+        cherryflag=false;
+
+        Lawn ln=new Lawn(lawn);
 
     }
 
     @FXML
-    private void cherry()
+    private void sunButton()
     {
-        ch=true;
-        wal=false;
-        peashooter=false;
-        sunflower=false;
+        sunflag=true;
+        peaflag=false;
+        walnutflag=false;
+        cherryflag=false;
+
     }
 
     @FXML
-    private void peashooter()
+    private void cherryButton()
     {
-        ch=false;
-        wal=false;
-        peashooter=true;
-        sunflower=false;
+        sunflag=false;
+        peaflag=false;
+        walnutflag=false;
+        cherryflag=true;
+
     }
 
     @FXML
-    private void walnut()
+    private void peaButton()
     {
-        ch=false;
-        wal=true;
-        peashooter=false;
-        sunflower=false;
+        sunflag=false;
+        peaflag=true;
+        walnutflag=false;
+        cherryflag=false;
+
     }
+
     @FXML
-    private void sunflower()
+    private void walnutButton()
     {
-        ch=false;
-        wal=false;
-        peashooter=false;
-        sunflower=true;
+        sunflag=false;
+        peaflag=false;
+        walnutflag=true;
+        cherryflag=false;
+
     }
+
+
+
+
 
 }
