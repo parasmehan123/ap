@@ -17,14 +17,14 @@ public class PauseMenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        try {
-            FileInputStream fn1 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/PAUSE_MENU.png"), fn2 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/SAVE_GAME_BUTTON.png"), fn3 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/RESTART_LEVL.png"), fn4 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/RESUME_GAME.png"), fn5 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/EXIT_BUTTON.png");
-            background.setImage(new Image(fn1));
-            savegame.setImage(new Image(fn2));
-            restartlevel.setImage(new Image(fn3));
-            resumegame.setImage(new Image(fn4));
-            exitgame.setImage(new Image(fn5));
-        }catch (IOException e){}
+        //
+        //        try {
+        //            FileInputStream fn1 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/PAUSE_MENU.png"), fn2 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/SAVE_GAME_BUTTON.png"), fn3 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/RESTART_LEVL.png"), fn4 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/RESUME_GAME.png"), fn5 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/EXIT_BUTTON.png");
+        //            background.setImage(new Image(fn1));
+        //            savegame.setImage(new Image(fn2));
+        //            restartlevel.setImage(new Image(fn3));
+        //            resumegame.setImage(new Image(fn4));
+        //            exitgame.setImage(new Image(fn5));
+        //        }catch (IOException e){}
     }
 }

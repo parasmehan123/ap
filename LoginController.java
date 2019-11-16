@@ -29,11 +29,11 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         FileInputStream fn= null;
-        try {
-            fn = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/login_page.png");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        //        try {
+        //            fn = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/login_page.png");
+        //        } catch (FileNotFoundException e) {
+        //            e.printStackTrace();
+        //        }
         background.setImage(new Image(fn));
 
     }

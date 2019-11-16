@@ -52,12 +52,12 @@ public class PlayGameController implements Initializable {
         statpea1=pea1;
 
         FileInputStream fn1= null,fn2=null;
-        try {
-            fn1 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/circled-pause.png");
-            fn2=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/EXIT_BUTTON.png");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        //        try {
+        //            fn1 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/circled-pause.png");
+        //            fn2=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/EXIT_BUTTON.png");
+        //        } catch (FileNotFoundException e) {
+        //            e.printStackTrace();
+        //        }
         pause.setImage(new Image(fn1));
         exitgame.setImage(new Image(fn2));
 

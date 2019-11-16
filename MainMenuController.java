@@ -31,25 +31,25 @@ public class MainMenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        try {
-            FileInputStream fn1=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/MAIN_PAGE.png");
-            background.setImage(new Image(fn1));
-            FileInputStream fn2=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/START_NEW_GAME.png");
-            start_game.setImage(new Image(fn2));
-            FileInputStream fn3=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/load_game.png");
-            resume_game.setImage(new Image(fn3));
-            FileInputStream fn4=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/INSTRUCTION_MAIN_BUTTON.png");
-            instructions.setImage(new Image(fn4));
-            FileInputStream fn5=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/LEADERBOARDS_BUTTON.png");
-            leaderboard.setImage(new Image(fn5));
-            FileInputStream fn6=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/EXIT_BUTTON.png");
-            exit.setImage(new Image(fn6));
-            FileInputStream fn7=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/choose_level.png");
-            chooselevel.setImage(new Image(fn7));
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        //        try {
+        //            FileInputStream fn1=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/MAIN_PAGE.png");
+        //            background.setImage(new Image(fn1));
+        //            FileInputStream fn2=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/START_NEW_GAME.png");
+        //            start_game.setImage(new Image(fn2));
+        //            FileInputStream fn3=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/load_game.png");
+        //            resume_game.setImage(new Image(fn3));
+        //            FileInputStream fn4=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/INSTRUCTION_MAIN_BUTTON.png");
+        //            instructions.setImage(new Image(fn4));
+        //            FileInputStream fn5=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/LEADERBOARDS_BUTTON.png");
+        //            leaderboard.setImage(new Image(fn5));
+        //            FileInputStream fn6=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/EXIT_BUTTON.png");
+        //            exit.setImage(new Image(fn6));
+        //            FileInputStream fn7=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/choose_level.png");
+        //            chooselevel.setImage(new Image(fn7));
+        //
+        //        } catch (FileNotFoundException e) {
+        //            e.printStackTrace();
+        //        }
 
 
     }
