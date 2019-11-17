@@ -10,6 +10,7 @@ public abstract class Plant extends Character{
     public Plant(int x,int y, Image im)
     {
         super(x,im);
+        this.y=y;
     }
 
     public int getY() {

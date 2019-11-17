@@ -18,7 +18,7 @@
             <Image url="@images/playgamebackground.png" />
          </image>
       </ImageView>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane fx:id="main" onMouseMoved="#display" prefHeight="200.0" prefWidth="200.0">
          <children>
             <GridPane fx:id="lawn" layoutX="249.0" layoutY="107.0" prefHeight="649.0" prefWidth="766.0">
               <columnConstraints>
@@ -91,6 +91,7 @@
                   </VBox>
                </children>
             </StackPane>
+            <Text fx:id="tmp" layoutX="73.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
          </children>
       </AnchorPane>
    </children>

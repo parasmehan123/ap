@@ -11,11 +11,7 @@ public class SunFlower extends Plant {
 
     static
     {
-        try
-        {
-            FileInputStream fn=new FileInputStream("/Users/pawanmehan/ap_project/src/sample/images/Sunflower_transparent.gif");
-            im=new Image(fn);
-        }catch (IOException E){}
+        im=Helper.getImage("/Users/pawanmehan/ap_project/src/sample/images/Sunflower_transparent.gif");
     }
 
     public SunFlower(int x, int y)

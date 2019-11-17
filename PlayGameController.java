@@ -9,13 +9,17 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import sun.security.provider.Sun;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class PlayGameController implements Initializable {
 
@@ -25,25 +29,30 @@ public class PlayGameController implements Initializable {
     private ImageView pea1,cherry1,walnu1,sun1;
 
     @FXML
-    private Text tex;
+    private Text tmp;
 
     @FXML
     private GridPane lawn;
 
     public static boolean sunflag,peaflag,walnutflag,cherryflag;
 
+    @FXML
+    private AnchorPane main;
+    public static AnchorPane statmain;
+
+    public static GameStatus currentStatus;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         stage=Main2.statstage;
-
+        statmain=main;
         sunflag=false;
         peaflag=false;
         walnutflag=false;
         cherryflag=false;
-
         Lawn ln=new Lawn(lawn);
-
+        currentStatus=new GameStatus(0);
     }
 
     @FXML
@@ -86,8 +95,16 @@ public class PlayGameController implements Initializable {
 
     }
 
+    @FXML
+    private void display(MouseEvent event)
+    {
+        tmp.setText(event.getX()+" "+event.getY());
+    }
 
-
+    public static void sunCollected()
+    {
+        currentStatus.increase();
+    }
 
 
 }

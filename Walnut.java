@@ -11,11 +11,7 @@ public class Walnut extends Plant {
 
     static
     {
-        try
-        {
-            FileInputStream fn=new FileInputStream("/Users/pawanmehan/ap_project/src/sample/images/walnut.gif");
-            im=new Image(fn);
-        }catch (IOException E){}
+        im=Helper.getImage("/Users/pawanmehan/ap_project/src/sample/images/walnut.gif");
     }
 
     public Walnut(int x, int y)

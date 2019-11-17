@@ -11,11 +11,7 @@ public class Cherrybomb extends Plant {
 
     static
     {
-        try
-        {
-            FileInputStream fn=new FileInputStream("/Users/pawanmehan/ap_project/src/sample/images/Cherrybomb.png");
-            im=new Image(fn);
-        }catch (IOException E){}
+        im=Helper.getImage("/Users/pawanmehan/ap_project/src/sample/images/Cherrybomb.png");
     }
     public Cherrybomb(int x, int y)
     {

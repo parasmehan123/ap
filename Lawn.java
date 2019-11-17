@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -7,7 +8,8 @@ import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
 
-public class Lawn {
+public class Lawn
+{
 
     private GridPane lawn;
     ArrayList<ArrayList<ImageView>> plants;
@@ -17,10 +19,10 @@ public class Lawn {
         this.lawn=lawn;
         this.plants=new ArrayList<>();
 
-        for(int i=0;i<9;i++)
+        for(int i=0;i<5;i++)
         {
             plants.add(new ArrayList<ImageView>());
-            for(int j=0;j<5;j++)
+            for(int j=0;j<9;j++)
             {
                 ImageView im=new ImageView();
                 im.setFitWidth(100);
@@ -34,12 +36,12 @@ public class Lawn {
                 im.setFitWidth(bn.getPrefWidth());
                 bn.setGraphic(im);
                 bn.addEventFilter(MouseEvent.MOUSE_PRESSED, event ->{
-                    Integer x=GridPane.getRowIndex( bn),y=GridPane.getColumnIndex( bn);
+                    Integer y=GridPane.getRowIndex( bn),x=GridPane.getColumnIndex( bn);
                     System.out.println( "Node: " + " at " + x + "/" + y);
                     plant(x,y);
 
                 });
-                lawn.add(bn,i,j);
+                lawn.add(bn,j,i);
 
             }
         }
@@ -66,7 +68,7 @@ public class Lawn {
         else if(peaflag==true && sunflag==false && cherryflag==false && walnutflag==false)
         {
             flag=true;
-            pl=new Peashooter(x,y);
+            pl=new Peashooter(x,y,this);
 
         }
         else if(walnutflag==true && sunflag==false && cherryflag==false && peaflag==false)
@@ -80,6 +82,8 @@ public class Lawn {
             tmp.setImage(pl.getIm());
             tmp.setFitWidth(100);
             tmp.setFitHeight(150);
+            if(PlayGameController.peaflag)
+                ((Peashooter) pl).start_attack();
         }
         PlayGameController.sunflag=false;
         PlayGameController.peaflag=false;
@@ -89,5 +93,9 @@ public class Lawn {
 
     }
 
+    public ImageView getImageView(int x,int y)
+    {
+        return this.plants.get(y).get(x);
+    }
 
 }

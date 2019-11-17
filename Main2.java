@@ -1,4 +1,5 @@
 package sample;
+import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +32,21 @@ public class Main2 extends Application {
         primaryStage.setResizable(false);
         primaryStage.show();
         statstage=primaryStage;
+
+        final int[] co = {0};
+        final long[] star = {System.nanoTime()};
+        new AnimationTimer()
+        {
+
+            @Override
+            public void handle(long now) {
+                if((now - star[0]) > 5e9) {
+                    SunToken.sky();
+                    star[0] = now;
+                }
+
+            }
+        }.start();
 //        ImageView zomb1=PlayGameController.statzomb1,lm1=PlayGameController.statlm1;
 //        TranslateTransition tr=new TranslateTransition(Duration.seconds(25),zomb1);
 //        tr.setByX(-1300);
