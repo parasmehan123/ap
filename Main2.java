@@ -24,6 +24,8 @@ public class Main2 extends Application {
 
     public static String path;
 
+    public static GameStatus statgame;
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -38,56 +40,53 @@ public class Main2 extends Application {
         primaryStage.show();
         statstage=primaryStage;
 
-        final int[] co = {0};
-        final long[] star = {System.nanoTime()};
+        GameStatus game=new GameStatus("Player",1);
+        statgame=game;
+
+        long tmp=System.nanoTime();
+        final long[] star = {tmp,tmp};
+
+        final boolean[] initialise_flag = {true};
         new AnimationTimer()
         {
 
             @Override
             public void handle(long now) {
-                if((now - star[0]) > 5e9) {
+                if(initialise_flag[0])
+                {
+                    initialise_flag[0]=false;
+                    initialise_play_game();
+                }
+                /*
+                zombie_reached_plant();
+
+                remove_dead_characters();
+
+                peas_attack_zombies();
+
+                zombie_reached_home();
+
+                increase_timer();
+
+                unlock_plants();
+
+                spwan_zombies();
+
+                */
+
+                if((now - star[1]) > 10e9) {
                     SunToken.sky();
-                    star[0] = now;
+                    star[1] = now;
                 }
 
             }
         }.start();
-//        ImageView zomb1=PlayGameController.statzomb1,lm1=PlayGameController.statlm1;
-//        TranslateTransition tr=new TranslateTransition(Duration.seconds(25),zomb1);
-//        tr.setByX(-1300);
-//        tr.play();
-//
-//        Image im1=PlayGameController.statp1.getImage(),im2=PlayGameController.statsuntoken.getImage();
-//        ImageView pea=PlayGameController.statpea1;
-//        Image im3=pea.getImage();
-//
-//        pea.setImage(null);
-//        PlayGameController.statsuntoken.setImage(null);
-//        PlayGameController.statp1.setImage(null);
-//
-//        tr.setOnFinished(e->{
-//            zomb1.setImage(null);
-//            TranslateTransition tr2=new TranslateTransition(Duration.seconds(4),lm1);
-//            tr2.setByX(+1560);
-//            tr2.play();
-//            tr2.setOnFinished(e2->{
-//                lm1.setImage(null);
-//                PlayGameController.statsuntoken.setImage(im2);
-//                TranslateTransition tr3=new TranslateTransition(Duration.seconds(5),PlayGameController.statsuntoken);
-//                tr3.setByY(500);
-//                tr3.play();
-//                tr3.setOnFinished(e3->{
-//                    pea.setImage(im3);
-//                    PlayGameController.statp1.setImage(im1);
-//                    TranslateTransition tr4=new TranslateTransition(Duration.seconds(5),pea);
-//                    tr4.setByX(1500);
-//                    tr4.play();
-//                });
-//
-//            });
-//        });
+
 
     }
+
+
+    public static void initialise_play_game(){}
 
 
     public static void main(String[] args) {

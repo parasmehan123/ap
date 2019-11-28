@@ -38,7 +38,7 @@ public class Lawn
                 bn.addEventFilter(MouseEvent.MOUSE_PRESSED, event ->{
                     Integer y=GridPane.getRowIndex( bn),x=GridPane.getColumnIndex( bn);
                     System.out.println( "Node: " + " at " + x + "/" + y);
-                    plant(x,y);
+                    //plant(x,y);
 
                 });
                 lawn.add(bn,j,i);
@@ -47,6 +47,7 @@ public class Lawn
         }
     }
 
+    /*
     public void plant(int x,int y)
     {
         boolean sunflag=PlayGameController.sunflag,peaflag=PlayGameController.peaflag,walnutflag=PlayGameController.walnutflag,cherryflag=PlayGameController.cherryflag;
@@ -93,6 +94,8 @@ public class Lawn
 
     }
 
+
+     */
     public ImageView getImageView(int x,int y)
     {
         return this.plants.get(y).get(x);

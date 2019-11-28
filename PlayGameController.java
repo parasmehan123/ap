@@ -1,25 +1,15 @@
 package sample;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import sun.security.provider.Sun;
-
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class PlayGameController implements Initializable {
 
@@ -52,7 +42,6 @@ public class PlayGameController implements Initializable {
         walnutflag=false;
         cherryflag=false;
         Lawn ln=new Lawn(lawn);
-        currentStatus=new GameStatus(0);
     }
 
     @FXML
@@ -100,11 +89,5 @@ public class PlayGameController implements Initializable {
     {
         tmp.setText(event.getX()+" "+event.getY());
     }
-
-    public static void sunCollected()
-    {
-        currentStatus.increase();
-    }
-
 
 }

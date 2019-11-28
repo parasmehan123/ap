@@ -1,13 +1,6 @@
 package sample;
 
-import javafx.animation.AnimationTimer;
-import javafx.animation.TranslateTransition;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.util.Duration;
-
-import java.io.FileInputStream;
-import java.io.IOException;
 
 public class Peashooter extends Plant {
 
@@ -23,10 +16,11 @@ public class Peashooter extends Plant {
     }
     public Peashooter(int x, int y,Lawn ln)
     {
-        super(x,y,im1);
+        super(x,y,100);
         this.ln=ln;
     }
 
+    /*
     public void start_attack()
     {
         final int x=super.getX(),y=super.getY();
@@ -65,5 +59,7 @@ public class Peashooter extends Plant {
         }.start();
     }
 
+
+     */
 
 }
