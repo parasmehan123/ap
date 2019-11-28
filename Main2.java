@@ -14,17 +14,22 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileReader;
 
 public class Main2 extends Application {
 
     public static Stage statstage;
 
+    public static String path;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
 
+        BufferedReader br = new BufferedReader(new FileReader("/Users/pawanmehan/ap_project/src/sample/path.txt"));
+        path=br.readLine();
 
         Parent root=FXMLLoader.load(getClass().getResource("PlayGame.fxml"));
         primaryStage.setTitle("PlantsVsZombies");

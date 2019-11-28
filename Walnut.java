@@ -11,7 +11,8 @@ public class Walnut extends Plant {
 
     static
     {
-        im=Helper.getImage("/Users/pawanmehan/ap_project/src/sample/images/walnut.gif");
+        String path=Main2.path;
+        im=Helper.getImage(path+"walnut.gif");
     }
 
     public Walnut(int x, int y)

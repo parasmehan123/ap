@@ -11,7 +11,8 @@ public class Cherrybomb extends Plant {
 
     static
     {
-        im=Helper.getImage("/Users/pawanmehan/ap_project/src/sample/images/Cherrybomb.png");
+        String path=Main2.path;
+        im=Helper.getImage(path+"Cherrybomb.png");
     }
     public Cherrybomb(int x, int y)
     {

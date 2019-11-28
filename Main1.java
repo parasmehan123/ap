@@ -13,7 +13,9 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
+import java.io.FileReader;
 
 public class Main1 extends Application {
 
@@ -24,6 +26,9 @@ public class Main1 extends Application {
         primaryStage.setTitle("PlantsVsZombies");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
+
+//        BufferedReader br=new BufferedReader(new FileReader("/Users/pawanmehan/ap_project/src/sample/path.txt"));
+//        System.out.println(br.readLine());
 
     }
 

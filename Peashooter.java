@@ -16,9 +16,10 @@ public class Peashooter extends Plant {
 
     static
     {
-        im1=Helper.getImage("/Users/pawanmehan/ap_project/src/sample/images/PeaShooter_Idle1.gif");
-        im2=Helper.getImage("/Users/pawanmehan/ap_project/src/sample/images/PeaShooter_Spit.gif");
-        pea=Helper.getImage("/Users/pawanmehan/ap_project/src/sample/images/ProjectilePea.png");
+        String path=Main2.path;
+        im1=Helper.getImage(path+"PeaShooter_Idle1.gif");
+        im2=Helper.getImage(path+"PeaShooter_Spit.gif");
+        pea=Helper.getImage(path+"ProjectilePea.png");
     }
     public Peashooter(int x, int y,Lawn ln)
     {

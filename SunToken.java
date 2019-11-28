@@ -13,7 +13,8 @@ public class SunToken {
 
     static
     {
-        im=Helper.getImage("/Users/pawanmehan/ap_project/src/sample/images/suntoken.png");
+        String path=Main2.path;
+        im=Helper.getImage(path+"suntoken.png");
     }
 
     public SunToken()
