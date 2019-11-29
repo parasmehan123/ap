@@ -17,6 +17,7 @@ import javafx.util.Duration;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileReader;
+import java.util.Map;
 
 public class Main2 extends Application {
 
@@ -81,10 +82,8 @@ public class Main2 extends Application {
                 }
                 if((now-star[2]>1e9)){
                     game.one_second();
-
                     PlayGameController.handle_plants_button(game.which_plants_available());
-
-
+                    star[2]= now;
                 }
 
             }
@@ -96,6 +95,57 @@ public class Main2 extends Application {
 
     public static void initialise_play_game(){
 
+
+    }
+
+
+
+    public static void buy_plant(int x,int y)
+    {
+        Map<String,Boolean> avail=statgame.which_plants_available();
+        boolean sunflag=PlayGameController.sunflag,peaflag=PlayGameController.peaflag,walnutflag=PlayGameController.walnutflag,cherryflag=PlayGameController.cherryflag;
+        boolean flag=false;
+        Plant pl=null;
+
+        //new String[]{"Peashooter", "Walnut", "Cherrybomb", "SunFlower"}))
+        if(sunflag==true && cherryflag==false && peaflag==false && walnutflag==false && avail.get("SunFlower"))
+        {
+            flag=true;
+            pl=new SunFlower(x,y);
+            statgame.increase_time("SunFlower",10);
+        }
+        else if(cherryflag==true && sunflag==false && peaflag==false && walnutflag==false && avail.get("Cherrybomb"))
+        {
+            flag=true;
+            pl=new Cherrybomb(x,y);
+            statgame.increase_time("Cherrybomb",10);
+        }
+        else if(peaflag==true && sunflag==false && cherryflag==false && walnutflag==false && avail.get("Peashooter"))
+        {
+            flag=true;
+            pl=new Peashooter(x,y);
+            statgame.increase_time("Peashooter",10);
+
+        }
+        else if(walnutflag==true && sunflag==false && cherryflag==false && peaflag==false && avail.get("Walnut"))
+        {
+            flag=true;
+            pl=new Walnut(x,y);
+            statgame.increase_time("Walnut",10);
+        }
+
+        if(flag) {
+            statgame.addPlant(pl);
+            ImageView tmp = PlayGameController.ln.plants.get(y).get(x);
+            tmp.setImage(pl.getIm());
+            tmp.setFitWidth(100);
+            tmp.setFitHeight(150);
+
+        }
+        PlayGameController.sunflag=false;
+        PlayGameController.peaflag=false;
+        PlayGameController.walnutflag=false;
+        PlayGameController.cherryflag=false;
 
     }
 

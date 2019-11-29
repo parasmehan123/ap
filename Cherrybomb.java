@@ -19,4 +19,9 @@ public class Cherrybomb extends Plant {
         super(x,y,100);
 
     }
+    @Override
+    public Image getIm()
+    {
+        return im;
+    }
 }

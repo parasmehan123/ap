@@ -31,15 +31,15 @@ public class GameStatus implements Serializable {
         this.plants=new ArrayList<>();
 
         this.time_remaining=new HashMap<>();
-        time_remaining.put("Peashooter",10);
-        time_remaining.put("Walnut",10);
-        time_remaining.put("Cherrybomb",10);
+        time_remaining.put("Peashooter",15);
+        time_remaining.put("Walnut",20);
+        time_remaining.put("Cherrybomb",30);
         time_remaining.put("SunFlower",10);
         this.price=new HashMap<>();
-        price.put("Peashooter",10);
-        price.put("Walnut",10);
-        price.put("Cherrybomb",10);
-        price.put("SunFlower",10);
+        price.put("Peashooter",4);
+        price.put("Walnut",2);
+        price.put("Cherrybomb",6);
+        price.put("SunFlower",2);
     }
 
 
@@ -71,6 +71,7 @@ public class GameStatus implements Serializable {
             String k = entry.getKey();
             Integer v = entry.getValue();
             time_remaining.put(k, Math.max(0, v - 1));
+            //System.out.println(time_remaining.get(k));
         }
 
     }
@@ -91,7 +92,15 @@ public class GameStatus implements Serializable {
         return avaialabePlants;
     }
 
+    public void increase_time(String as,int time)
+    {
+        time_remaining.put(as,time);
+    }
 
-
+    public void addPlant(Plant pl)
+    {
+        //        System.out.println(pl.toString());
+        this.plants.add(pl);
+    }
 
 }

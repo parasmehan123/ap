@@ -5,7 +5,6 @@ import javafx.scene.image.Image;
 public class Peashooter extends Plant {
 
     private static Image im1,im2,pea;
-    private Lawn ln;
 
     static
     {
@@ -14,10 +13,16 @@ public class Peashooter extends Plant {
         im2=Helper.getImage(path+"PeaShooter_Spit.gif");
         pea=Helper.getImage(path+"ProjectilePea.png");
     }
-    public Peashooter(int x, int y,Lawn ln)
+    public Peashooter(int x, int y)
     {
         super(x,y,100);
-        this.ln=ln;
+
+    }
+
+    @Override
+    public Image getIm()
+    {
+        return im1;
     }
 
     /*

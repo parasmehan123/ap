@@ -1,6 +1,8 @@
 package sample;
 
 
+import javafx.scene.image.Image;
+
 public abstract class Plant extends Character{
 
 
@@ -8,5 +10,7 @@ public abstract class Plant extends Character{
     {
         super(x,y,health);
     }
+
+    public abstract Image getIm();
 
 }

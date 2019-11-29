@@ -42,6 +42,8 @@ public class PlayGameController implements Initializable {
     private ImageView stop_sun,stop_cherry,stop_pea,stop_walnut;
     private static ImageView stat_stop_sun,stat_stop_cherry,stat_stop_pea,stat_stop_walnut;
 
+    public static Lawn ln;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -57,7 +59,7 @@ public class PlayGameController implements Initializable {
         peaflag=false;
         walnutflag=false;
         cherryflag=false;
-        Lawn ln=new Lawn(lawn);
+        ln=new Lawn(lawn);
         handle_plants_button(currentStatus.which_plants_available());
     }
 
@@ -68,7 +70,7 @@ public class PlayGameController implements Initializable {
         peaflag=false;
         walnutflag=false;
         cherryflag=false;
-
+        System.out.println("clicked");
     }
 
     @FXML

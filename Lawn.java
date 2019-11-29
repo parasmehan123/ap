@@ -38,8 +38,7 @@ public class Lawn
                 bn.addEventFilter(MouseEvent.MOUSE_PRESSED, event ->{
                     Integer y=GridPane.getRowIndex( bn),x=GridPane.getColumnIndex( bn);
                     System.out.println( "Node: " + " at " + x + "/" + y);
-                    //plant(x,y);
-
+                    Main2.buy_plant(x,y);
                 });
                 lawn.add(bn,j,i);
 
@@ -47,55 +46,7 @@ public class Lawn
         }
     }
 
-    /*
-    public void plant(int x,int y)
-    {
-        boolean sunflag=PlayGameController.sunflag,peaflag=PlayGameController.peaflag,walnutflag=PlayGameController.walnutflag,cherryflag=PlayGameController.cherryflag;
-        boolean flag=false;
-        Plant pl=null;
 
-        if(sunflag==true && cherryflag==false && peaflag==false && walnutflag==false)
-        {
-            flag=true;
-            pl=new SunFlower(x,y);
-
-        }
-        else if(cherryflag==true && sunflag==false && peaflag==false && walnutflag==false)
-        {
-            flag=true;
-            pl=new Cherrybomb(x,y);
-
-        }
-        else if(peaflag==true && sunflag==false && cherryflag==false && walnutflag==false)
-        {
-            flag=true;
-            pl=new Peashooter(x,y,this);
-
-        }
-        else if(walnutflag==true && sunflag==false && cherryflag==false && peaflag==false)
-        {
-            flag=true;
-            pl=new Walnut(x,y);
-        }
-
-        if(flag) {
-            ImageView tmp = this.plants.get(y).get(x);
-            tmp.setImage(pl.getIm());
-            tmp.setFitWidth(100);
-            tmp.setFitHeight(150);
-            if(PlayGameController.peaflag)
-                ((Peashooter) pl).start_attack();
-        }
-        PlayGameController.sunflag=false;
-        PlayGameController.peaflag=false;
-        PlayGameController.walnutflag=false;
-        PlayGameController.cherryflag=false;
-
-
-    }
-
-
-     */
     public ImageView getImageView(int x,int y)
     {
         return this.plants.get(y).get(x);
