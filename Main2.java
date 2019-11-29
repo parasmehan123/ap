@@ -42,7 +42,7 @@ public class Main2 extends Application {
     public void start(Stage primaryStage) throws Exception {
 
 
-        BufferedReader br = new BufferedReader(new FileReader("/Users/pawanmehan/ap_project/src/sample/path.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("/home/tejas/IdeaProjects/ap/src/sample/path.txt"));
         path=br.readLine();
 
         GameStatus game=new GameStatus("Player",1);
@@ -98,6 +98,7 @@ public class Main2 extends Application {
                 if((now-star[1]>1e9)){
                     game.one_second();
                     PlayGameController.handle_plants_button(game.which_plants_available());
+                    spawn_sun_tokens();
                     star[1]= now;
                 }
 
@@ -109,6 +110,7 @@ public class Main2 extends Application {
                 });
                 ZombieCollideWithPLant(game.getPlants(), game.getZombies());
                 move_lawn_mover(1);
+
 
             }
         }.start();
@@ -290,6 +292,16 @@ public class Main2 extends Application {
 
         }
 
+    }
+
+    public static void spawn_sun_tokens()
+    {
+        ArrayList<Plant> ar=statgame.getPlants();
+        for(Plant p:ar)
+        {
+            if(p.getClass().getName().equals(SunFlower.class.getName()))
+                ((SunFlower) p).oneSecond();
+        }
     }
 
     public static void main(String[] args) {
