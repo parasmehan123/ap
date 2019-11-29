@@ -44,20 +44,17 @@ public class Main2 extends Application {
         statgame=game;
 
         long tmp=System.nanoTime();
-        final long[] star = {tmp,tmp};
+        final long[] star = {tmp,tmp,tmp};
 
-        final boolean[] initialise_flag = {true};
+        initialise_play_game();
+
         new AnimationTimer()
         {
 
             @Override
             public void handle(long now) {
-                if(initialise_flag[0])
-                {
-                    initialise_flag[0]=false;
-                    initialise_play_game();
-                }
-                /*
+
+                /*TODO
                 zombie_reached_plant();
 
                 remove_dead_characters();
@@ -72,11 +69,17 @@ public class Main2 extends Application {
 
                 spwan_zombies();
 
+                zombie_attacking_plant();
                 */
 
                 if((now - star[1]) > 10e9) {
                     SunToken.sky();
                     star[1] = now;
+                }
+                if((now-star[2]>1e9)){
+                    game.one_second();
+
+                    PlayGameController.handle_plants_button(game.which_plants_available());
                 }
 
             }
@@ -86,7 +89,10 @@ public class Main2 extends Application {
     }
 
 
-    public static void initialise_play_game(){}
+    public static void initialise_play_game(){
+
+
+    }
 
 
     public static void main(String[] args) {

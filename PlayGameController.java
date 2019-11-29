@@ -9,6 +9,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class PlayGameController implements Initializable {
@@ -88,6 +89,12 @@ public class PlayGameController implements Initializable {
     private void display(MouseEvent event)
     {
         tmp.setText(event.getX()+" "+event.getY());
+    }
+
+    //TODO
+    public static void handle_plants_button(Map<String,Boolean> plant_available)
+    {
+
     }
 
 }

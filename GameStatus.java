@@ -2,6 +2,9 @@ package sample;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GameStatus implements Serializable {
 
@@ -15,6 +18,10 @@ public class GameStatus implements Serializable {
 
     private ArrayList<Plant> plants;
 
+    private final Map<String,Integer> time_remaining,price;
+
+    private ArrayList<String> plant_names = new ArrayList<String>(Arrays.asList(new String[]{"Peashooter", "Walnut", "Cherrybomb", "SunFlower"}));
+
     GameStatus(String player,int level)
     {
         this.level=level;
@@ -22,6 +29,17 @@ public class GameStatus implements Serializable {
         this.sun_tokens_collected=0;
         this.zombies=new ArrayList<>();
         this.plants=new ArrayList<>();
+
+        this.time_remaining=new HashMap<>();
+        time_remaining.put("Peashooter",10);
+        time_remaining.put("Walnut",10);
+        time_remaining.put("Cherrybomb",10);
+        time_remaining.put("SunFlower",10);
+        this.price=new HashMap<>();
+        price.put("Peashooter",10);
+        price.put("Walnut",10);
+        price.put("Cherrybomb",10);
+        price.put("SunFlower",10);
     }
 
 
@@ -45,4 +63,30 @@ public class GameStatus implements Serializable {
         this.sun_tokens_collected+=1;
         System.out.println(this.sun_tokens_collected);
     }
+
+    public void one_second()
+    {
+
+        for (Map.Entry<String, Integer> entry : time_remaining.entrySet()) {
+            String k = entry.getKey();
+            Integer v = entry.getValue();
+            time_remaining.put(k, Math.max(0, v - 1));
+        }
+
+    }
+
+    //TODO
+    public Map<String,Boolean> which_plants_available()
+    {
+
+    }
+
+
+    //TODO -similar for other plants use plant_names object
+    public boolean isPeaAvailable(){
+        return true;
+    }
+
+
+
 }
