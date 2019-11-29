@@ -33,6 +33,9 @@ public class Main2 extends Application {
         BufferedReader br = new BufferedReader(new FileReader("/Users/pawanmehan/ap_project/src/sample/path.txt"));
         path=br.readLine();
 
+        GameStatus game=new GameStatus("Player",1);
+        statgame=game;
+
         Parent root=FXMLLoader.load(getClass().getResource("PlayGame.fxml"));
         primaryStage.setTitle("PlantsVsZombies");
         primaryStage.setScene(new Scene(root));
@@ -40,8 +43,6 @@ public class Main2 extends Application {
         primaryStage.show();
         statstage=primaryStage;
 
-        GameStatus game=new GameStatus("Player",1);
-        statgame=game;
 
         long tmp=System.nanoTime();
         final long[] star = {tmp,tmp,tmp};
@@ -70,6 +71,8 @@ public class Main2 extends Application {
                 spwan_zombies();
 
                 zombie_attacking_plant();
+
+                sunflower
                 */
 
                 if((now - star[1]) > 10e9) {
@@ -80,6 +83,8 @@ public class Main2 extends Application {
                     game.one_second();
 
                     PlayGameController.handle_plants_button(game.which_plants_available());
+
+
                 }
 
             }

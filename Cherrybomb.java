@@ -16,7 +16,7 @@ public class Cherrybomb extends Plant {
     }
     public Cherrybomb(int x, int y)
     {
-        super(x,y,im);
+        super(x,y,100);
 
     }
 }

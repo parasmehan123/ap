@@ -48,7 +48,7 @@
                         <Image url="@images/wood.png" />
                      </image>
                   </ImageView>
-                  <VBox prefHeight="571.0" prefWidth="142.0">
+                  <VBox fx:id="plant_box" prefHeight="571.0" prefWidth="142.0">
                      <children>
                         <Button ellipsisString="" mnemonicParsing="false" onAction="#sunButton" prefHeight="126.0" prefWidth="142.0" style="-fx-background-color: transparent;">
                            <graphic>
@@ -92,6 +92,26 @@
                </children>
             </StackPane>
             <Text fx:id="tmp" layoutX="73.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <ImageView fx:id="stop_sun" fitHeight="116.0" fitWidth="192.0" layoutX="20.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/stop.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="stop_pea" fitHeight="116.0" fitWidth="192.0" layoutX="20.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/stop.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="stop_walnut" fitHeight="116.0" fitWidth="192.0" layoutX="20.0" layoutY="625.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/stop.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="stop_cherry" fitHeight="116.0" fitWidth="192.0" layoutX="20.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/stop.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

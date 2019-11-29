@@ -75,17 +75,22 @@ public class GameStatus implements Serializable {
 
     }
 
-    //TODO
     public Map<String,Boolean> which_plants_available()
     {
 
+        int currBalance = sun_tokens_collected;
+        HashMap<String, Boolean> avaialabePlants = new HashMap<String, Boolean>();
+        price.forEach((k, v)-> {
+            if(v<= currBalance && time_remaining.get(k)==0 ){
+                avaialabePlants.put(k, true);
+            }
+            else{
+                avaialabePlants.put(k, false);
+            }
+        });
+        return avaialabePlants;
     }
 
-
-    //TODO -similar for other plants use plant_names object
-    public boolean isPeaAvailable(){
-        return true;
-    }
 
 
 
