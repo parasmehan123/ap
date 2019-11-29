@@ -30,7 +30,7 @@ public class Zombie extends Character{
     public void attack(Plant p){
         p.setHealth(p.getHealth()-(float)getAttack_strength()/100);
         if(p.getHealth()<=0){
-            p.die();
+            Main2.remove_plant(p);
         }
     }
     //TODO

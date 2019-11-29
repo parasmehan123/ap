@@ -70,7 +70,6 @@ public class PlayGameController implements Initializable {
         peaflag=false;
         walnutflag=false;
         cherryflag=false;
-        System.out.println("clicked");
     }
 
     @FXML
@@ -109,7 +108,6 @@ public class PlayGameController implements Initializable {
         tmp.setText(event.getX()+" "+event.getY());
     }
 
-    //TODO
     public static void handle_plants_button(Map<String,Boolean> plant_available)
     {
         ArrayList<String> plant_names = new ArrayList<String>(Arrays.asList(new String[]{"Peashooter", "Walnut", "Cherrybomb", "SunFlower"}));

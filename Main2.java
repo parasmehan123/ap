@@ -207,10 +207,24 @@ public class Main2 extends Application {
     {
         zomb_im.forEach((k,v)->{
             if(!ShouldZombieStop.get(k)) {
-                v.setLayoutX(Math.max(0, v.getLayoutX() - delta));
+                v.setLayoutX(v.getLayoutX() - delta);
+                if(v.getLayoutX()<=250)
+                    zombie_reached_home();
                 k.setX((int) v.getLayoutX());
             }
         });
+    }
+
+    //TODO
+    public static void zombie_reached_home()
+    {
+
+    }
+
+    public static void remove_plant(Plant pl)
+    {
+        statgame.remove_plant(pl);
+        PlayGameController.ln.plants.get(pl.getY()).get(pl.getX()).setImage(null);
     }
 
     public static void move_pea(double delta)
@@ -222,17 +236,25 @@ public class Main2 extends Application {
     }
 
     public static void ZombieCollideWithPLant(ArrayList<Plant> arrPLants, ArrayList<Zombie> arrzomb){
-        for(Plant tempP : arrPLants){
-            for(Zombie tempz: arrzomb){
+
+        for(Zombie tempz: arrzomb){
+            boolean flag=false;
+            for(Plant tempP : arrPLants){
                 if((320+90*tempP.getX()- tempz.getX())== 90 && Math.abs(130+120*tempP.getY()-tempz.getY())<=20){
                     tempz.attack(tempP);
-                    System.out.println(tempP.getHealth());
+                    //System.out.println(tempP.getHealth());
                     ShouldZombieStop.put(tempz, true);
+                    flag=true;
+                    break;
                 }
             }
+            if(!flag)
+                ShouldZombieStop.put(tempz,false);
+
         }
 
     }
+
     public static void main(String[] args) {
         launch(args);
     }
