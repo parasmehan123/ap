@@ -11,7 +11,7 @@ public class GameStatus implements Serializable
 
     private final String player;
 
-    private final int level;
+    private LevelStatus level;
 
     private int sun_tokens_collected;
 
@@ -27,7 +27,7 @@ public class GameStatus implements Serializable
 
     private ArrayList<Boolean> lawn_mover;
 
-    GameStatus(String player, int level) {
+    GameStatus(String player, LevelStatus level) {
         this.level = level;
         this.player = player;
         this.sun_tokens_collected = 10;
@@ -131,4 +131,6 @@ public class GameStatus implements Serializable
     public boolean is_lm_available(int i){ return this.lawn_mover.get(i);}
 
     public void remove_availability(int y){ this.lawn_mover.set(y,false);}
+
+    public LevelStatus get_level(){return this.level;}
 }

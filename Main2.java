@@ -21,6 +21,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class Main2 extends Application {
 
@@ -42,10 +43,10 @@ public class Main2 extends Application {
     public void start(Stage primaryStage) throws Exception {
 
 
-        BufferedReader br = new BufferedReader(new FileReader("/home/tejas/IdeaProjects/ap/src/sample/path.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("/Users/pawanmehan/ap_project/src/sample/path.txt"));
         path=br.readLine();
 
-        GameStatus game=new GameStatus("Player",1);
+        GameStatus game=new GameStatus("Player",Level1.getInstance());
         statgame=game;
 
 
@@ -61,10 +62,9 @@ public class Main2 extends Application {
         final long[] star = {tmp,tmp,tmp};
 
         initialise_play_game();
-
+        LevelStatus level=game.get_level();
         //spawn_pea(0,1);
 
-        spawn_zombie(1,1);
 
         new AnimationTimer()
         {
@@ -75,8 +75,6 @@ public class Main2 extends Application {
                 if((now - star[0]) > 10e9) {
                     SunToken.sky();
                     star[0] = now;
-                    spawn_zombie(1,1);
-                    spawn_zombie(2,2);
                     cherry_bomb_blast();
 
                 }
@@ -85,6 +83,23 @@ public class Main2 extends Application {
                     PlayGameController.handle_plants_button(game.which_plants_available());
                     spawn_sun_tokens();
                     star[1]= now;
+                }
+                if(now-star[2]>level.getTime()*1e9)
+                {
+                    Map<Integer,Integer> mp=level.getMap();
+                    Random rand=new Random();
+                    int yf = -1;
+                    while(yf == -1 && level.isZombieAvailable())
+                    {
+//                        spawn_zombie(rand.nextInt(5)5);
+                        int y = rand.nextInt(2);
+                        if(mp.containsKey(y+1) && mp.get(y+1)>0){
+                            yf = y+1;
+                        }
+                    }
+                    spawn_zombie(rand.nextInt(5), yf);
+                    mp.put(yf, mp.get(yf)-1);
+                    star[2]=now;
                 }
                 move_zombies(0.5);
                 ArrayList<Pea> tmp=new ArrayList<>();
