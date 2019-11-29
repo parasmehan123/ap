@@ -42,7 +42,7 @@ public class Main2 extends Application {
     public void start(Stage primaryStage) throws Exception {
 
 
-        BufferedReader br = new BufferedReader(new FileReader("/Users/pawanmehan/ap_project/src/sample/path.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("/home/tejas/IdeaProjects/ap/src/sample/path.txt"));
         path=br.readLine();
 
         GameStatus game=new GameStatus("Player",1);
@@ -112,28 +112,29 @@ public class Main2 extends Application {
         boolean sunflag=PlayGameController.sunflag,peaflag=PlayGameController.peaflag,walnutflag=PlayGameController.walnutflag,cherryflag=PlayGameController.cherryflag;
         boolean flag=false;
         Plant pl=null;
+        ImageView tmp = PlayGameController.ln.plants.get(y).get(x);
 
         //new String[]{"Peashooter", "Walnut", "Cherrybomb", "SunFlower"}))
-        if(sunflag==true && cherryflag==false && peaflag==false && walnutflag==false && avail.get("SunFlower"))
+        if(sunflag==true && cherryflag==false && peaflag==false && walnutflag==false && avail.get("SunFlower") && tmp.getImage()==null)
         {
             flag=true;
             pl=new SunFlower(x,y);
             statgame.increase_time("SunFlower",10);
         }
-        else if(cherryflag==true && sunflag==false && peaflag==false && walnutflag==false && avail.get("Cherrybomb"))
+        else if(cherryflag==true && sunflag==false && peaflag==false && walnutflag==false && avail.get("Cherrybomb") && tmp.getImage()==null)
         {
             flag=true;
             pl=new Cherrybomb(x,y);
             statgame.increase_time("Cherrybomb",10);
         }
-        else if(peaflag==true && sunflag==false && cherryflag==false && walnutflag==false && avail.get("Peashooter"))
+        else if(peaflag==true && sunflag==false && cherryflag==false && walnutflag==false && avail.get("Peashooter") && tmp.getImage()==null)
         {
             flag=true;
             pl=new Peashooter(x,y);
             statgame.increase_time("Peashooter",10);
 
         }
-        else if(walnutflag==true && sunflag==false && cherryflag==false && peaflag==false && avail.get("Walnut"))
+        else if(walnutflag==true && sunflag==false && cherryflag==false && peaflag==false && avail.get("Walnut") && tmp.getImage()==null)
         {
             flag=true;
             pl=new Walnut(x,y);
@@ -142,7 +143,7 @@ public class Main2 extends Application {
 
         if(flag) {
             statgame.addPlant(pl);
-            ImageView tmp = PlayGameController.ln.plants.get(y).get(x);
+
             tmp.setImage(pl.getIm());
             tmp.setFitWidth(100);
             tmp.setFitHeight(150);
