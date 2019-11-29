@@ -42,7 +42,7 @@ public class Main2 extends Application {
     public void start(Stage primaryStage) throws Exception {
 
 
-        BufferedReader br = new BufferedReader(new FileReader("/home/tejas/IdeaProjects/ap/src/sample/path.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("/Users/pawanmehan/ap_project/src/sample/path.txt"));
         path=br.readLine();
 
         GameStatus game=new GameStatus("Player",1);
@@ -228,6 +228,8 @@ public class Main2 extends Application {
             moving_lawn_mover.add(PlayGameController.get_lawn_mover(y));
             statgame.remove_availability(y);
         }
+        else
+            System.out.println("GAME LOST");
 
     }
 
@@ -247,7 +249,7 @@ public class Main2 extends Application {
 
     public static void move_lawn_mover(double delta)
     {
-        for(int i=0;i<moving_lawn_mover.size();i++){
+        for(int i=moving_lawn_mover.size()-1;i>=0;i--){
             Lawn_Mover lawnX=moving_lawn_mover.get(i);
             ImageView im= lawnX.getIm();
             im.setLayoutX(im.getLayoutX()+delta);
@@ -255,6 +257,7 @@ public class Main2 extends Application {
             if(im.getLayoutX()>=1000)
             {
                 PlayGameController.statmain.getChildren().remove(im);
+                moving_lawn_mover.remove(i);
             }
 
             ArrayList<Zombie> ar=statgame.getZombies();
