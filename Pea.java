@@ -3,10 +3,10 @@ package sample;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.lang.reflect.Array;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Pea {
+public class Pea implements Serializable {
     private int x;
     private int y;
     private final int damage;
@@ -35,9 +35,7 @@ public class Pea {
                 Main2.pea_im.remove(this);
                 Main2.statgame.remove_pea(this);
                 if(tempZom.getHealth()<=0){
-                    PlayGameController.statmain.getChildren().remove(tempZom);
-                    Main2.zomb_im.remove(tempZom);
-                    Main2.statgame.remove_zombie(tempZom);
+                    Main2.remove_zombie(tempZom);
                 }
                 return true;
             }

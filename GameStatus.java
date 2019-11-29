@@ -6,7 +6,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GameStatus implements Serializable {
+public class GameStatus implements Serializable
+{
 
     private final String player;
 
@@ -24,6 +25,8 @@ public class GameStatus implements Serializable {
 
     private ArrayList<String> plant_names = new ArrayList<String>(Arrays.asList(new String[]{"Peashooter", "Walnut", "Cherrybomb", "SunFlower"}));
 
+    private ArrayList<Boolean> lawn_mover;
+
     GameStatus(String player, int level) {
         this.level = level;
         this.player = player;
@@ -31,17 +34,22 @@ public class GameStatus implements Serializable {
         this.zombies = new ArrayList<>();
         this.plants = new ArrayList<>();
         this.peas = new ArrayList<>();
+        this.lawn_mover=new ArrayList<>();
+        for(int i=0;i<5;i++)
+            lawn_mover.add(true);
 
         this.time_remaining = new HashMap<>();
         time_remaining.put("Peashooter", 15);
         time_remaining.put("Walnut", 20);
         time_remaining.put("Cherrybomb", 30);
         time_remaining.put("SunFlower", 10);
+
         this.price = new HashMap<>();
         price.put("Peashooter", 4);
         price.put("Walnut", 2);
         price.put("Cherrybomb", 6);
         price.put("SunFlower", 2);
+
     }
 
 
@@ -119,4 +127,8 @@ public class GameStatus implements Serializable {
     public void remove_plant(Plant pl) {
         this.plants.remove(pl);
     }
+
+    public boolean is_lm_available(int i){ return this.lawn_mover.get(i);}
+
+    public void remove_availability(int y){ this.lawn_mover.set(y,false);}
 }

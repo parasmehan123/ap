@@ -36,6 +36,8 @@ public class Main2 extends Application {
 
     public static Map<Zombie, Boolean> ShouldZombieStop = new HashMap<Zombie, Boolean>();
 
+    public static ArrayList<Lawn_Mover> moving_lawn_mover=new ArrayList<>();
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -60,8 +62,9 @@ public class Main2 extends Application {
 
         initialise_play_game();
 
-        spawn_pea(0,1);
-        spawn_zombie(1,1);
+        //spawn_pea(0,1);
+
+
         new AnimationTimer()
         {
 
@@ -89,21 +92,23 @@ public class Main2 extends Application {
                 if((now - star[0]) > 10e9) {
                     SunToken.sky();
                     star[0] = now;
+                    spawn_zombie(1,1);
+                    spawn_zombie(4,2);
                 }
                 if((now-star[1]>1e9)){
                     game.one_second();
                     PlayGameController.handle_plants_button(game.which_plants_available());
                     star[1]= now;
                 }
-                if(now-star[2]>1e9){
-                    move_zombies(0.5);
-                    ArrayList<Pea> tmp=new ArrayList<>();
-                    pea_im.forEach((k,v)->{
-                        if(k.CheckCollision(game.getZombies(),v))
-                            tmp.add(k);
-                    });
-                    ZombieCollideWithPLant(game.getPlants(), game.getZombies());
-                }
+
+                move_zombies(0.5);
+                ArrayList<Pea> tmp=new ArrayList<>();
+                pea_im.forEach((k,v)->{
+                    if(k.CheckCollision(game.getZombies(),v))
+                        tmp.add(k);
+                });
+                ZombieCollideWithPLant(game.getPlants(), game.getZombies());
+                move_lawn_mover(1);
 
             }
         }.start();
@@ -169,22 +174,21 @@ public class Main2 extends Application {
         Zombie zm=null;
         ImageView iv=new ImageView();
         if(type==1) {
-            zm = new Zombie(1200, 130 + 120 * y, 100, 10);
+            zm = new Zombie(1000, y, 100, 10);
             iv.setImage(Zombie.normal_image);
         }
         else {
-            zm = new Zombie(1200, 130 + 120 * y, 100, 10);
+            zm = new Zombie(1000, y, 100, 10);
             iv.setImage(Zombie.conehead_image);
         }
         iv.setFitWidth(150);
         iv.setFitHeight(150);
-        iv.setLayoutX(1000);
-        iv.setLayoutY(130+120*y);
+        iv.setLayoutX(zm.getX());
+        iv.setLayoutY(130+120*zm.getY());
         zomb_im.put(zm,iv);
         statgame.addZombie(zm);
         PlayGameController.statmain.getChildren().add(iv);
         ShouldZombieStop.put(zm, false);
-
     }
 
     public static void spawn_pea(int x,int y)
@@ -209,15 +213,19 @@ public class Main2 extends Application {
             if(!ShouldZombieStop.get(k)) {
                 v.setLayoutX(v.getLayoutX() - delta);
                 if(v.getLayoutX()<=250)
-                    zombie_reached_home();
+                    zombie_reached_home(k.getY());
                 k.setX((int) v.getLayoutX());
             }
         });
     }
 
-    //TODO
-    public static void zombie_reached_home()
+    //TODO - not available
+    public static void zombie_reached_home(int y)
     {
+        if(statgame.is_lm_available(y)){
+            moving_lawn_mover.add(PlayGameController.get_lawn_mover(y));
+            statgame.remove_availability(y);
+        }
 
     }
 
@@ -235,6 +243,35 @@ public class Main2 extends Application {
         });
     }
 
+    public static void move_lawn_mover(double delta)
+    {
+        for(int i=0;i<moving_lawn_mover.size();i++){
+            Lawn_Mover lawnX=moving_lawn_mover.get(i);
+            ImageView im= lawnX.getIm();
+            im.setLayoutX(im.getLayoutX()+delta);
+
+            if(im.getLayoutX()>=1000)
+            {
+                PlayGameController.statmain.getChildren().remove(im);
+            }
+
+            ArrayList<Zombie> ar=statgame.getZombies();
+            for(int j=ar.size()-1;j>=0;j--)
+            {
+                if(ar.get(j).getY()==lawnX.getY() && ar.get(j).getX()<=lawnX.getIm().getLayoutX())
+                    remove_zombie(ar.get(j));
+            }
+
+        }
+    }
+
+
+    public static void remove_zombie(Zombie tempZom)
+    {
+        PlayGameController.statmain.getChildren().remove(Main2.zomb_im.get(tempZom));
+        Main2.zomb_im.remove(tempZom);
+        Main2.statgame.remove_zombie(tempZom);
+    }
     public static void ZombieCollideWithPLant(ArrayList<Plant> arrPLants, ArrayList<Zombie> arrzomb){
 
         for(Zombie tempz: arrzomb){

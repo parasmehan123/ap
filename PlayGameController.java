@@ -44,6 +44,14 @@ public class PlayGameController implements Initializable {
 
     public static Lawn ln;
 
+    public static ArrayList<Lawn_Mover> lawn_movers;
+
+    @FXML
+    public ImageView mover1,mover2,mover3,mover4,mover5;
+    public static ImageView stat_mover1,stat_mover2,stat_mover3,stat_mover4,stat_mover5;
+
+    private static GameStatus game;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -55,12 +63,23 @@ public class PlayGameController implements Initializable {
         stat_stop_pea=stop_pea;
         stat_stop_walnut=stop_walnut;
         currentStatus=Main2.statgame;
+        stat_mover1=mover1;
+        stat_mover2=mover2;
+        stat_mover3=mover3;
+        stat_mover4=mover4;
+        stat_mover5=mover5;
+        game=Main2.statgame;
+
         sunflag=false;
         peaflag=false;
         walnutflag=false;
         cherryflag=false;
         ln=new Lawn(lawn);
+        lawn_movers=new ArrayList<>();
+        init_lawn_movers();
+
         handle_plants_button(currentStatus.which_plants_available());
+
     }
 
     @FXML
@@ -129,4 +148,51 @@ public class PlayGameController implements Initializable {
             stat_stop_sun.setVisible(false);
     }
 
+    public static void init_lawn_movers()
+    {
+        if(game.is_lm_available(0))
+            lawn_movers.add(new Lawn_Mover(0,stat_mover1));
+        else
+            statmain.getChildren().remove(stat_mover1);
+
+        if(game.is_lm_available(1))
+            lawn_movers.add(new Lawn_Mover(1,stat_mover2));
+        else
+            statmain.getChildren().remove(stat_mover2);
+
+        if(game.is_lm_available(2))
+            lawn_movers.add(new Lawn_Mover(2,stat_mover3));
+        else
+            statmain.getChildren().remove(stat_mover3);
+
+        if(game.is_lm_available(3))
+            lawn_movers.add(new Lawn_Mover(3,stat_mover4));
+        else
+            statmain.getChildren().remove(stat_mover4);
+
+        if(game.is_lm_available(4))
+            lawn_movers.add(new Lawn_Mover(4,stat_mover5));
+        else
+            statmain.getChildren().remove(stat_mover5);
+
+    }
+
+    public static Lawn_Mover get_lawn_mover(int i)
+    {
+        return lawn_movers.get(i);
+    }
+
+    public static void remove_lawn_mover(int i)
+    {
+        if(i==0)
+            statmain.getChildren().remove(stat_mover1);
+        else if(i==2)
+            statmain.getChildren().remove(stat_mover2);
+        else if(i==3)
+            statmain.getChildren().remove(stat_mover3);
+        else if(i==4)
+            statmain.getChildren().remove(stat_mover4);
+
+        statmain.getChildren().remove(stat_mover5);
+    }
 }
