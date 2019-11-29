@@ -1,18 +1,10 @@
 package sample;
 
-import javafx.animation.AnimationTimer;
-import javafx.animation.TranslateTransition;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.util.Duration;
-
-import java.io.FileInputStream;
-import java.io.IOException;
 
 public class Peashooter extends Plant {
 
     private static Image im1,im2,pea;
-    private Lawn ln;
 
     static
     {
@@ -21,12 +13,19 @@ public class Peashooter extends Plant {
         im2=Helper.getImage(path+"PeaShooter_Spit.gif");
         pea=Helper.getImage(path+"ProjectilePea.png");
     }
-    public Peashooter(int x, int y,Lawn ln)
+    public Peashooter(int x, int y)
     {
-        super(x,y,im1);
-        this.ln=ln;
+        super(x,y,100);
+
     }
 
+    @Override
+    public Image getIm()
+    {
+        return im1;
+    }
+
+    /*
     public void start_attack()
     {
         final int x=super.getX(),y=super.getY();
@@ -65,5 +64,7 @@ public class Peashooter extends Plant {
         }.start();
     }
 
+
+     */
 
 }

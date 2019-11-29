@@ -1,26 +1,17 @@
 package sample;
 
-import javafx.scene.image.Image;
+import java.io.Serializable;
 
-public abstract class Character {
+public abstract class Character implements Serializable {
 
-    private int x;
+    private int x,y;
+    private int health;
 
-    private Image im;
-
-    public Character(int x,Image im)
+    protected Character(int x,int y,int health)
     {
-        this.x=x;
-        this.im=im;
+        this.x = x;
+        this.y = y;
+        this.health = health;
     }
 
-
-    public int getX() {
-        return x;
-    }
-
-
-    public Image getIm() {
-        return im;
-    }
 }

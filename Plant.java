@@ -1,19 +1,16 @@
 package sample;
 
-import javafx.scene.image.Image;
 
+import javafx.scene.image.Image;
 
 public abstract class Plant extends Character{
 
-    private int y;
 
-    public Plant(int x,int y, Image im)
+    protected Plant(int x,int y,int health)
     {
-        super(x,im);
-        this.y=y;
+        super(x,y,health);
     }
 
-    public int getY() {
-        return y;
-    }
+    public abstract Image getIm();
+
 }

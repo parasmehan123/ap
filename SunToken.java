@@ -39,7 +39,7 @@ public class SunToken {
         bn.setLayoutY(0);
         bn.setLayoutX(300+Math.random()*600);
         bn.setOnAction(e->{
-            PlayGameController.sunCollected();
+            Main2.statgame.increaseSunToken();
             PlayGameController.statmain.getChildren().remove(bn);
         });
         TranslateTransition tr=new TranslateTransition(Duration.seconds(10),bn);

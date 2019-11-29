@@ -17,12 +17,15 @@ import javafx.util.Duration;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileReader;
+import java.util.Map;
 
 public class Main2 extends Application {
 
     public static Stage statstage;
 
     public static String path;
+
+    public static GameStatus statgame;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -31,6 +34,9 @@ public class Main2 extends Application {
         BufferedReader br = new BufferedReader(new FileReader("/Users/pawanmehan/ap_project/src/sample/path.txt"));
         path=br.readLine();
 
+        GameStatus game=new GameStatus("Player",1);
+        statgame=game;
+
         Parent root=FXMLLoader.load(getClass().getResource("PlayGame.fxml"));
         primaryStage.setTitle("PlantsVsZombies");
         primaryStage.setScene(new Scene(root));
@@ -38,54 +44,108 @@ public class Main2 extends Application {
         primaryStage.show();
         statstage=primaryStage;
 
-        final int[] co = {0};
-        final long[] star = {System.nanoTime()};
+
+        long tmp=System.nanoTime();
+        final long[] star = {tmp,tmp,tmp};
+
+        initialise_play_game();
+
         new AnimationTimer()
         {
 
             @Override
             public void handle(long now) {
-                if((now - star[0]) > 5e9) {
+
+                /*TODO
+                zombie_reached_plant();
+
+                remove_dead_characters();
+
+                peas_attack_zombies();
+
+                zombie_reached_home();
+
+                increase_timer();
+
+                unlock_plants();
+
+                spwan_zombies();
+
+                zombie_attacking_plant();
+
+                sunflower
+                */
+
+                if((now - star[1]) > 10e9) {
                     SunToken.sky();
-                    star[0] = now;
+                    star[1] = now;
+                }
+                if((now-star[2]>1e9)){
+                    game.one_second();
+                    PlayGameController.handle_plants_button(game.which_plants_available());
+                    star[2]= now;
                 }
 
             }
         }.start();
-//        ImageView zomb1=PlayGameController.statzomb1,lm1=PlayGameController.statlm1;
-//        TranslateTransition tr=new TranslateTransition(Duration.seconds(25),zomb1);
-//        tr.setByX(-1300);
-//        tr.play();
-//
-//        Image im1=PlayGameController.statp1.getImage(),im2=PlayGameController.statsuntoken.getImage();
-//        ImageView pea=PlayGameController.statpea1;
-//        Image im3=pea.getImage();
-//
-//        pea.setImage(null);
-//        PlayGameController.statsuntoken.setImage(null);
-//        PlayGameController.statp1.setImage(null);
-//
-//        tr.setOnFinished(e->{
-//            zomb1.setImage(null);
-//            TranslateTransition tr2=new TranslateTransition(Duration.seconds(4),lm1);
-//            tr2.setByX(+1560);
-//            tr2.play();
-//            tr2.setOnFinished(e2->{
-//                lm1.setImage(null);
-//                PlayGameController.statsuntoken.setImage(im2);
-//                TranslateTransition tr3=new TranslateTransition(Duration.seconds(5),PlayGameController.statsuntoken);
-//                tr3.setByY(500);
-//                tr3.play();
-//                tr3.setOnFinished(e3->{
-//                    pea.setImage(im3);
-//                    PlayGameController.statp1.setImage(im1);
-//                    TranslateTransition tr4=new TranslateTransition(Duration.seconds(5),pea);
-//                    tr4.setByX(1500);
-//                    tr4.play();
-//                });
-//
-//            });
-//        });
+
+
+    }
+
+
+    public static void initialise_play_game(){
+
+
+    }
+
+
+
+    public static void buy_plant(int x,int y)
+    {
+        Map<String,Boolean> avail=statgame.which_plants_available();
+        boolean sunflag=PlayGameController.sunflag,peaflag=PlayGameController.peaflag,walnutflag=PlayGameController.walnutflag,cherryflag=PlayGameController.cherryflag;
+        boolean flag=false;
+        Plant pl=null;
+
+        //new String[]{"Peashooter", "Walnut", "Cherrybomb", "SunFlower"}))
+        if(sunflag==true && cherryflag==false && peaflag==false && walnutflag==false && avail.get("SunFlower"))
+        {
+            flag=true;
+            pl=new SunFlower(x,y);
+            statgame.increase_time("SunFlower",10);
+        }
+        else if(cherryflag==true && sunflag==false && peaflag==false && walnutflag==false && avail.get("Cherrybomb"))
+        {
+            flag=true;
+            pl=new Cherrybomb(x,y);
+            statgame.increase_time("Cherrybomb",10);
+        }
+        else if(peaflag==true && sunflag==false && cherryflag==false && walnutflag==false && avail.get("Peashooter"))
+        {
+            flag=true;
+            pl=new Peashooter(x,y);
+            statgame.increase_time("Peashooter",10);
+
+        }
+        else if(walnutflag==true && sunflag==false && cherryflag==false && peaflag==false && avail.get("Walnut"))
+        {
+            flag=true;
+            pl=new Walnut(x,y);
+            statgame.increase_time("Walnut",10);
+        }
+
+        if(flag) {
+            statgame.addPlant(pl);
+            ImageView tmp = PlayGameController.ln.plants.get(y).get(x);
+            tmp.setImage(pl.getIm());
+            tmp.setFitWidth(100);
+            tmp.setFitHeight(150);
+
+        }
+        PlayGameController.sunflag=false;
+        PlayGameController.peaflag=false;
+        PlayGameController.walnutflag=false;
+        PlayGameController.cherryflag=false;
 
     }
 
