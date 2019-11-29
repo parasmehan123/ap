@@ -27,7 +27,7 @@ public class Pea implements Serializable {
 
     public boolean CheckCollision(ArrayList<Zombie> arr, ImageView pi){
         for(Zombie tempZom : arr){
-            if(tempZom.getX()- this.x<=-60 && tempZom.getY()- this.y<=4){
+            if(tempZom.getX()- this.x<=-60 && tempZom.getY()- this.y==0){
                 System.out.println(tempZom.getHealth());
                 tempZom.setHealth(tempZom.getHealth()- this.damage);
                 System.out.println(tempZom.getHealth());

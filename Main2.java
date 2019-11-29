@@ -64,6 +64,7 @@ public class Main2 extends Application {
 
         //spawn_pea(0,1);
 
+        spawn_zombie(1,1);
 
         new AnimationTimer()
         {
@@ -71,29 +72,13 @@ public class Main2 extends Application {
             @Override
             public void handle(long now) {
 
-                /*TODO
-                zombie_reached_plant();
-
-                remove_dead_characters();
-
-                peas_attack_zombies();
-
-                zombie_reached_home();
-
-                increase_timer();
-
-                unlock_plants();
-
-                zombie_attacking_plant();
-
-                sunflower
-                */
-
                 if((now - star[0]) > 10e9) {
                     SunToken.sky();
                     star[0] = now;
                     spawn_zombie(1,1);
-                    spawn_zombie(4,2);
+                    spawn_zombie(2,2);
+                    cherry_bomb_blast();
+
                 }
                 if((now-star[1]>1e9)){
                     game.one_second();
@@ -101,7 +86,6 @@ public class Main2 extends Application {
                     spawn_sun_tokens();
                     star[1]= now;
                 }
-
                 move_zombies(0.5);
                 ArrayList<Pea> tmp=new ArrayList<>();
                 pea_im.forEach((k,v)->{
@@ -109,7 +93,7 @@ public class Main2 extends Application {
                         tmp.add(k);
                 });
                 ZombieCollideWithPLant(game.getPlants(), game.getZombies());
-                move_lawn_mover(1);
+                move_lawn_mover(5);
 
 
             }
@@ -196,7 +180,7 @@ public class Main2 extends Application {
     public static void spawn_pea(int x,int y)
     {
 
-        Pea pea=new Pea(320+90*x,130+120*y);
+        Pea pea=new Pea(320+90*x,y);
         ImageView iv=new ImageView();
         iv.setImage(Pea.im);
         iv.setFitWidth(25);
@@ -214,7 +198,7 @@ public class Main2 extends Application {
         zomb_im.forEach((k,v)->{
             if(!ShouldZombieStop.get(k)) {
                 v.setLayoutX(v.getLayoutX() - delta);
-                if(v.getLayoutX()<=250)
+                if(v.getLayoutX()<=225)
                     zombie_reached_home(k.getY());
                 k.setX((int) v.getLayoutX());
             }
@@ -247,7 +231,7 @@ public class Main2 extends Application {
 
     public static void move_lawn_mover(double delta)
     {
-        for(int i=0;i<moving_lawn_mover.size();i++){
+        for(int i=moving_lawn_mover.size()-1;i>=0;i--){
             Lawn_Mover lawnX=moving_lawn_mover.get(i);
             ImageView im= lawnX.getIm();
             im.setLayoutX(im.getLayoutX()+delta);
@@ -255,6 +239,7 @@ public class Main2 extends Application {
             if(im.getLayoutX()>=1000)
             {
                 PlayGameController.statmain.getChildren().remove(im);
+                moving_lawn_mover.remove(i);
             }
 
             ArrayList<Zombie> ar=statgame.getZombies();
@@ -274,24 +259,26 @@ public class Main2 extends Application {
         Main2.zomb_im.remove(tempZom);
         Main2.statgame.remove_zombie(tempZom);
     }
+
     public static void ZombieCollideWithPLant(ArrayList<Plant> arrPLants, ArrayList<Zombie> arrzomb){
 
         for(Zombie tempz: arrzomb){
-            boolean flag=false;
-            for(Plant tempP : arrPLants){
-                if((320+90*tempP.getX()- tempz.getX())== 90 && Math.abs(130+120*tempP.getY()-tempz.getY())<=20){
+            boolean flag= false;
+            for(int i=arrPLants.size()-1;i>=0;i--) {
+                Plant tempP=arrPLants.get(i);
+                if ((320 + 90 * tempP.getX() - tempz.getX()) == 90 && Math.abs(120 * tempP.getY() - 120 * tempz.getY()) <= 20) {
+//                    System.out.println((320+90*tempP.getX()- tempz.getX()));
                     tempz.attack(tempP);
-                    //System.out.println(tempP.getHealth());
+                    System.out.println(tempP.getHealth());
                     ShouldZombieStop.put(tempz, true);
-                    flag=true;
-                    break;
+                    flag = true;
                 }
             }
-            if(!flag)
-                ShouldZombieStop.put(tempz,false);
 
+            if(!flag){
+                ShouldZombieStop.put(tempz, false);
+            }
         }
-
     }
 
     public static void spawn_sun_tokens()
@@ -302,6 +289,18 @@ public class Main2 extends Application {
             if(p.getClass().getName().equals(SunFlower.class.getName()))
                 ((SunFlower) p).oneSecond();
         }
+    }
+
+    public static void cherry_bomb_blast()
+    {
+        ArrayList<Plant> ar=statgame.getPlants();
+        for(int i=ar.size()-1;i>=0;i--)
+            if(ar.get(i).getClass().getName().equals(Cherrybomb.class.getName()))
+            {
+                ((Cherrybomb) ar.get(i)).burst(statgame.getZombies());
+                remove_plant(ar.get(i));
+            }
+
     }
 
     public static void main(String[] args) {
