@@ -29,11 +29,10 @@ public class Pea implements Serializable {
         for(Zombie tempZom : arr){
 //            System.out.printf(tempZom.tempZom);
             if(tempZom.getX()- this.x<=-60 && tempZom.getY()- this.y==0){
-                System.out.println(tempZom.getHealth());
+                //System.out.println(tempZom.getHealth());
                 tempZom.setHealth(tempZom.getHealth()- this.damage);
-                System.out.println(tempZom.getHealth());
+                //System.out.println(tempZom.getHealth());
                 PlayGameController.statmain.getChildren().remove(pi);
-                Main2.pea_im.remove(this);
                 Main2.statgame.remove_pea(this);
                 if(tempZom.getHealth()<=0){
                     Main2.remove_zombie(tempZom);

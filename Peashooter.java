@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 
 public class Peashooter extends Plant {
 
-    private static Image im1,im2,pea;
+    public static Image im1,im2,pea;
 
     static
     {

@@ -6,9 +6,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PlayGameController">
@@ -91,7 +93,7 @@
                   </VBox>
                </children>
             </StackPane>
-            <Text fx:id="tmp" layoutX="73.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text fx:id="tmp" layoutX="50.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
             <ImageView fx:id="stop_sun" fitHeight="116.0" fitWidth="192.0" layoutX="20.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/stop.png" />
@@ -137,6 +139,38 @@
                   <Image url="@images/Lawn_mower.png" />
                </image>
             </ImageView>
+            <StackPane layoutX="50.0" layoutY="30.0" prefHeight="82.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="68.0" fitWidth="200.0" pickOnBounds="true" smooth="false">
+                     <image>
+                        <Image url="@images/wood.png" />
+                     </image>
+                  </ImageView>
+                  <HBox prefHeight="102.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="68.0" fitWidth="76.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@images/suntoken.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="sun_token_display" fill="#f8f4f4" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="115.22900390625">
+                           <font>
+                              <Font size="44.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </StackPane>
+            <Button ellipsisString="" layoutX="1000.0" layoutY="25.0" mnemonicParsing="false" onAction="#pause_button_clicked" prefHeight="61.0" prefWidth="120.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="83.0" fitWidth="97.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@images/circled-pause.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </children>

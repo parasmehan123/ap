@@ -15,16 +15,17 @@ public class Zombie extends Character{
         conehead_image=Helper.getImage(path+"Conehead_Zombie.gif");;
     }
 
-    private final int attack_strength;
+    private final int attack_strength,type;
 
     public int getAttack_strength() {
         return attack_strength;
     }
 
-    protected Zombie(int x, int y, int health, int attack_strength)
+    protected Zombie(int x, int y, int health, int attack_strength,int type)
     {
         super(x,y,health);
         this.attack_strength=attack_strength;
+        this.type=type;
     }
 
     public void attack(Plant p){
@@ -33,7 +34,8 @@ public class Zombie extends Character{
             Main2.remove_plant(p);
         }
     }
-    //TODO
-    public void die(){}
 
+    public int getType() {
+        return type;
+    }
 }

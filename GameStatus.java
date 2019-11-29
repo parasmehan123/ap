@@ -21,16 +21,17 @@ public class GameStatus implements Serializable
 
     private ArrayList<Pea> peas;
 
-    private final Map<String, Integer> time_remaining, price;
+    private final Map<String, Integer> time_remaining,price;
 
     private ArrayList<String> plant_names = new ArrayList<String>(Arrays.asList(new String[]{"Peashooter", "Walnut", "Cherrybomb", "SunFlower"}));
 
     private ArrayList<Boolean> lawn_mover;
 
-    GameStatus(String player, LevelStatus level) {
+    GameStatus(String player, LevelStatus level)
+    {
         this.level = level;
         this.player = player;
-        this.sun_tokens_collected = 10;
+        this.sun_tokens_collected = 0;
         this.zombies = new ArrayList<>();
         this.plants = new ArrayList<>();
         this.peas = new ArrayList<>();
@@ -54,24 +55,19 @@ public class GameStatus implements Serializable
 
 
     public ArrayList<Zombie> getZombies() {
-        return zombies;
-    }
-
-    public void setZombies(ArrayList<Zombie> zombies) {
-        this.zombies = zombies;
+        return this.zombies;
     }
 
     public ArrayList<Plant> getPlants() {
-        return plants;
+        return this.plants;
     }
 
-    public void setPlants(ArrayList<Plant> plants) {
-        this.plants = plants;
-    }
+    public ArrayList<Pea> getPeas(){ return this.peas;}
 
     public void increaseSunToken() {
         this.sun_tokens_collected += 1;
         System.out.println(this.sun_tokens_collected);
+        PlayGameController.set_sun_tokens_display(this.sun_tokens_collected);
     }
 
     public void one_second() {
@@ -133,4 +129,15 @@ public class GameStatus implements Serializable
     public void remove_availability(int y){ this.lawn_mover.set(y,false);}
 
     public LevelStatus get_level(){return this.level;}
+
+    public int getSun_tokens_collected(){return this.sun_tokens_collected;}
+
+    public void decrase_sun_tokens_collected(int i){
+        this.sun_tokens_collected-=i;
+        PlayGameController.set_sun_tokens_display(this.sun_tokens_collected);
+    }
+
+    public int getPrice(String na){
+        return this.price.get(na);
+    }
 }

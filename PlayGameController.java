@@ -21,7 +21,8 @@ public class PlayGameController implements Initializable {
     private Stage stage;
 
     @FXML
-    private Text tmp;
+    private Text tmp,sun_token_display;
+    public static Text stat_sun_token_display;
 
     @FXML
     private GridPane lawn;
@@ -31,8 +32,6 @@ public class PlayGameController implements Initializable {
     @FXML
     private AnchorPane main;
     public static AnchorPane statmain;
-
-    public static GameStatus currentStatus;
 
     @FXML
     private VBox plant_box;
@@ -62,7 +61,8 @@ public class PlayGameController implements Initializable {
         stat_stop_cherry=stop_cherry;
         stat_stop_pea=stop_pea;
         stat_stop_walnut=stop_walnut;
-        currentStatus=Main2.statgame;
+        stat_sun_token_display=sun_token_display;
+
         stat_mover1=mover1;
         stat_mover2=mover2;
         stat_mover3=mover3;
@@ -77,8 +77,9 @@ public class PlayGameController implements Initializable {
         ln=new Lawn(lawn);
         lawn_movers=new ArrayList<>();
         init_lawn_movers();
+        set_sun_tokens_display(game.getSun_tokens_collected());
 
-        handle_plants_button(currentStatus.which_plants_available());
+        handle_plants_button(game.which_plants_available());
 
     }
 
@@ -150,30 +151,26 @@ public class PlayGameController implements Initializable {
 
     public static void init_lawn_movers()
     {
-        if(game.is_lm_available(0))
-            lawn_movers.add(new Lawn_Mover(0,stat_mover1));
-        else
+        if(!game.is_lm_available(0))
             statmain.getChildren().remove(stat_mover1);
 
-        if(game.is_lm_available(1))
-            lawn_movers.add(new Lawn_Mover(1,stat_mover2));
-        else
+        if(!game.is_lm_available(1))
             statmain.getChildren().remove(stat_mover2);
 
-        if(game.is_lm_available(2))
-            lawn_movers.add(new Lawn_Mover(2,stat_mover3));
-        else
+        if(!game.is_lm_available(2))
             statmain.getChildren().remove(stat_mover3);
 
-        if(game.is_lm_available(3))
-            lawn_movers.add(new Lawn_Mover(3,stat_mover4));
-        else
+        if(!game.is_lm_available(3))
             statmain.getChildren().remove(stat_mover4);
 
-        if(game.is_lm_available(4))
-            lawn_movers.add(new Lawn_Mover(4,stat_mover5));
-        else
+        if(!game.is_lm_available(4))
             statmain.getChildren().remove(stat_mover5);
+
+        lawn_movers.add(new Lawn_Mover(0,stat_mover1));
+        lawn_movers.add(new Lawn_Mover(1,stat_mover2));
+        lawn_movers.add(new Lawn_Mover(2,stat_mover3));
+        lawn_movers.add(new Lawn_Mover(3,stat_mover4));
+        lawn_movers.add(new Lawn_Mover(4,stat_mover5));
 
     }
 
@@ -182,17 +179,15 @@ public class PlayGameController implements Initializable {
         return lawn_movers.get(i);
     }
 
-    public static void remove_lawn_mover(int i)
+    @FXML
+    public void pause_button_clicked()
     {
-        if(i==0)
-            statmain.getChildren().remove(stat_mover1);
-        else if(i==2)
-            statmain.getChildren().remove(stat_mover2);
-        else if(i==3)
-            statmain.getChildren().remove(stat_mover3);
-        else if(i==4)
-            statmain.getChildren().remove(stat_mover4);
-
-        statmain.getChildren().remove(stat_mover5);
+        Main2.save_flag=false;
     }
+
+    public static void set_sun_tokens_display(int i)
+    {
+        stat_sun_token_display.setText(String.valueOf(i));
+    }
+
 }
