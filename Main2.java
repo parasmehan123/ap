@@ -352,11 +352,33 @@ public class Main2 extends Application {
         }
     }
 
-    public static void serialize(GameStatus gs) throws IOException{
+    public static void serialize(GameStatus gs) throws IOException, ClassNotFoundException {
         ObjectOutputStream out = null;
         try{
-            out = new ObjectOutputStream( new FileOutputStream());
+            ArrayList<GameStatus> gsss = deserialise();
+            gsss.add(gs);
+            out = new ObjectOutputStream( new FileOutputStream("/Users/pawanmehan/ap_project/src/sample/save.txt"));
+            out.writeObject(gsss);
         }
+        finally {
+            if(out!= null)
+            out.close();
+        }
+    }
+
+    public static ArrayList<GameStatus> deserialise() throws IOException, ClassNotFoundException{
+        ArrayList<GameStatus> reto = null;
+        ObjectInputStream in = null;
+        try{
+            in = new ObjectInputStream(new FileInputStream("/Users/pawanmehan/ap_project/src/sample/save.txt"));
+            reto = (ArrayList<GameStatus>)in.readObject();
+        }
+        finally {
+            if(in!=null){
+                in.close();
+            }
+        }
+        return reto;
     }
 
     public static void main(String[] args) {
