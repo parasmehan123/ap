@@ -5,7 +5,7 @@ import java.io.Serializable;
 public abstract class Character implements Serializable {
 
     private int x,y;
-    private int health;
+    private float health;
 
     protected Character(int x,int y,int health)
     {
@@ -30,11 +30,11 @@ public abstract class Character implements Serializable {
         this.y = y;
     }
 
-    public int getHealth() {
+    public float getHealth() {
         return health;
     }
 
-    public void setHealth(int health) {
+    public void setHealth(float health) {
         this.health = health;
     }
 }

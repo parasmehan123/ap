@@ -32,10 +32,12 @@ public class Pea {
                 tempZom.setHealth(tempZom.getHealth()- this.damage);
                 System.out.println(tempZom.getHealth());
                 PlayGameController.statmain.getChildren().remove(pi);
-                //Main2.pea_im.remove(this);
+                Main2.pea_im.remove(this);
                 Main2.statgame.remove_pea(this);
                 if(tempZom.getHealth()<=0){
-                    tempZom.die();
+                    PlayGameController.statmain.getChildren().remove(tempZom);
+                    Main2.zomb_im.remove(tempZom);
+                    Main2.statgame.remove_zombie(tempZom);
                 }
                 return true;
             }

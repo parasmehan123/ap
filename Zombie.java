@@ -16,12 +16,23 @@ public class Zombie extends Character{
     }
 
     private final int attack_strength;
-    protected Zombie(int x,int y,int health,int attack_strength)
+
+    public int getAttack_strength() {
+        return attack_strength;
+    }
+
+    protected Zombie(int x, int y, int health, int attack_strength)
     {
         super(x,y,health);
         this.attack_strength=attack_strength;
     }
 
+    public void attack(Plant p){
+        p.setHealth(p.getHealth()-(float)getAttack_strength()/100);
+        if(p.getHealth()<=0){
+            p.die();
+        }
+    }
     //TODO
     public void die(){}
 

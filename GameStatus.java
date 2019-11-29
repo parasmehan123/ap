@@ -28,7 +28,7 @@ public class GameStatus implements Serializable {
     {
         this.level=level;
         this.player=player;
-        this.sun_tokens_collected=0;
+        this.sun_tokens_collected=10;
         this.zombies=new ArrayList<>();
         this.plants=new ArrayList<>();
         this.peas=new ArrayList<>();
@@ -114,6 +114,10 @@ public class GameStatus implements Serializable {
     public void addPea(Pea p){this.peas.add(p);}
 
     public void remove_pea(Pea p){this.peas.remove(p);}
+
+    public void remove_zombie(Zombie zm){
+        this.zombies.remove(zm);
+    }
 
 
 }

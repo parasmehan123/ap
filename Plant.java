@@ -13,4 +13,6 @@ public abstract class Plant extends Character{
 
     public abstract Image getIm();
 
+    public void die(){}
+
 }

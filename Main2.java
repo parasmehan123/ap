@@ -1,4 +1,5 @@
 package sample;
+import com.sun.xml.internal.ws.message.saaj.SAAJHeader;
 import javafx.animation.AnimationTimer;
 import javafx.animation.TranslateTransition;
 import javafx.application.Application;
@@ -33,6 +34,7 @@ public class Main2 extends Application {
 
     public static Map<Pea,ImageView> pea_im=new HashMap<Pea,ImageView>();
 
+    public static Map<Zombie, Boolean> ShouldZombieStop = new HashMap<Zombie, Boolean>();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -57,6 +59,7 @@ public class Main2 extends Application {
         final long[] star = {tmp,tmp,tmp};
 
         initialise_play_game();
+
         spawn_pea(0,1);
         spawn_zombie(1,1);
         new AnimationTimer()
@@ -93,16 +96,13 @@ public class Main2 extends Application {
                     star[1]= now;
                 }
                 if(now-star[2]>1e9){
-                    move_pea(3);
                     move_zombies(0.5);
                     ArrayList<Pea> tmp=new ArrayList<>();
                     pea_im.forEach((k,v)->{
                         if(k.CheckCollision(game.getZombies(),v))
                             tmp.add(k);
-
                     });
-                    for(Pea p:tmp)
-                        pea_im.remove(p);
+                    ZombieCollideWithPLant(game.getPlants(), game.getZombies());
                 }
 
             }
@@ -169,11 +169,11 @@ public class Main2 extends Application {
         Zombie zm=null;
         ImageView iv=new ImageView();
         if(type==1) {
-            zm = new Zombie(1200, 130 + 120 * y, 10, 10);
+            zm = new Zombie(1200, 130 + 120 * y, 100, 10);
             iv.setImage(Zombie.normal_image);
         }
         else {
-            zm = new Zombie(1200, 130 + 120 * y, 10, 10);
+            zm = new Zombie(1200, 130 + 120 * y, 100, 10);
             iv.setImage(Zombie.conehead_image);
         }
         iv.setFitWidth(150);
@@ -183,6 +183,7 @@ public class Main2 extends Application {
         zomb_im.put(zm,iv);
         statgame.addZombie(zm);
         PlayGameController.statmain.getChildren().add(iv);
+        ShouldZombieStop.put(zm, false);
 
     }
 
@@ -205,8 +206,10 @@ public class Main2 extends Application {
     public static void move_zombies(double delta)
     {
         zomb_im.forEach((k,v)->{
-            v.setLayoutX(Math.max(0,v.getLayoutX()-delta));
-            k.setX((int)v.getLayoutX());
+            if(!ShouldZombieStop.get(k)) {
+                v.setLayoutX(Math.max(0, v.getLayoutX() - delta));
+                k.setX((int) v.getLayoutX());
+            }
         });
     }
 
@@ -218,6 +221,18 @@ public class Main2 extends Application {
         });
     }
 
+    public static void ZombieCollideWithPLant(ArrayList<Plant> arrPLants, ArrayList<Zombie> arrzomb){
+        for(Plant tempP : arrPLants){
+            for(Zombie tempz: arrzomb){
+                if((320+90*tempP.getX()- tempz.getX())== 90 && Math.abs(130+120*tempP.getY()-tempz.getY())<=20){
+                    tempz.attack(tempP);
+                    System.out.println(tempP.getHealth());
+                    ShouldZombieStop.put(tempz, true);
+                }
+            }
+        }
+
+    }
     public static void main(String[] args) {
         launch(args);
     }
