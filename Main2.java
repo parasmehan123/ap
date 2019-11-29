@@ -17,6 +17,8 @@ import javafx.util.Duration;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Main2 extends Application {
@@ -27,6 +29,11 @@ public class Main2 extends Application {
 
     public static GameStatus statgame;
 
+    public static Map<Zombie,ImageView> zomb_im=new HashMap<Zombie,ImageView>();
+
+    public static Map<Pea,ImageView> pea_im=new HashMap<Pea,ImageView>();
+
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -36,6 +43,7 @@ public class Main2 extends Application {
 
         GameStatus game=new GameStatus("Player",1);
         statgame=game;
+
 
         Parent root=FXMLLoader.load(getClass().getResource("PlayGame.fxml"));
         primaryStage.setTitle("PlantsVsZombies");
@@ -49,7 +57,8 @@ public class Main2 extends Application {
         final long[] star = {tmp,tmp,tmp};
 
         initialise_play_game();
-
+        spawn_pea(0,1);
+        spawn_zombie(1,1);
         new AnimationTimer()
         {
 
@@ -69,21 +78,31 @@ public class Main2 extends Application {
 
                 unlock_plants();
 
-                spwan_zombies();
-
                 zombie_attacking_plant();
 
                 sunflower
                 */
 
-                if((now - star[1]) > 10e9) {
+                if((now - star[0]) > 10e9) {
                     SunToken.sky();
-                    star[1] = now;
+                    star[0] = now;
                 }
-                if((now-star[2]>1e9)){
+                if((now-star[1]>1e9)){
                     game.one_second();
                     PlayGameController.handle_plants_button(game.which_plants_available());
-                    star[2]= now;
+                    star[1]= now;
+                }
+                if(now-star[2]>1e9){
+                    move_pea(3);
+                    move_zombies(0.5);
+                    ArrayList<Pea> tmp=new ArrayList<>();
+                    pea_im.forEach((k,v)->{
+                        if(k.CheckCollision(game.getZombies(),v))
+                            tmp.add(k);
+
+                    });
+                    for(Pea p:tmp)
+                        pea_im.remove(p);
                 }
 
             }
@@ -93,11 +112,7 @@ public class Main2 extends Application {
     }
 
 
-    public static void initialise_play_game(){
-
-
-    }
-
+    public static void initialise_play_game(){ }
 
 
     public static void buy_plant(int x,int y)
@@ -149,6 +164,59 @@ public class Main2 extends Application {
 
     }
 
+    public static void spawn_zombie(int y,int type)
+    {
+        Zombie zm=null;
+        ImageView iv=new ImageView();
+        if(type==1) {
+            zm = new Zombie(1200, 130 + 120 * y, 10, 10);
+            iv.setImage(Zombie.normal_image);
+        }
+        else {
+            zm = new Zombie(1200, 130 + 120 * y, 10, 10);
+            iv.setImage(Zombie.conehead_image);
+        }
+        iv.setFitWidth(150);
+        iv.setFitHeight(150);
+        iv.setLayoutX(1000);
+        iv.setLayoutY(130+120*y);
+        zomb_im.put(zm,iv);
+        statgame.addZombie(zm);
+        PlayGameController.statmain.getChildren().add(iv);
+
+    }
+
+    public static void spawn_pea(int x,int y)
+    {
+
+        Pea pea=new Pea(320+90*x,130+120*y);
+        ImageView iv=new ImageView();
+        iv.setImage(Pea.im);
+        iv.setFitWidth(25);
+        iv.setFitHeight(25);
+        iv.setLayoutX(320+90*x);
+        iv.setLayoutY(130+120*y);
+        pea_im.put(pea,iv);
+        statgame.addPea(pea);
+        PlayGameController.statmain.getChildren().add(iv);
+
+    }
+
+    public static void move_zombies(double delta)
+    {
+        zomb_im.forEach((k,v)->{
+            v.setLayoutX(Math.max(0,v.getLayoutX()-delta));
+            k.setX((int)v.getLayoutX());
+        });
+    }
+
+    public static void move_pea(double delta)
+    {
+        pea_im.forEach((k,v)->{
+            v.setLayoutX(Math.min(1200,v.getLayoutX()+delta));
+            k.setX((int)v.getLayoutX());
+        });
+    }
 
     public static void main(String[] args) {
         launch(args);

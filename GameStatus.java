@@ -18,6 +18,8 @@ public class GameStatus implements Serializable {
 
     private ArrayList<Plant> plants;
 
+    private ArrayList<Pea> peas;
+
     private final Map<String,Integer> time_remaining,price;
 
     private ArrayList<String> plant_names = new ArrayList<String>(Arrays.asList(new String[]{"Peashooter", "Walnut", "Cherrybomb", "SunFlower"}));
@@ -29,6 +31,7 @@ public class GameStatus implements Serializable {
         this.sun_tokens_collected=0;
         this.zombies=new ArrayList<>();
         this.plants=new ArrayList<>();
+        this.peas=new ArrayList<>();
 
         this.time_remaining=new HashMap<>();
         time_remaining.put("Peashooter",15);
@@ -102,5 +105,15 @@ public class GameStatus implements Serializable {
         //        System.out.println(pl.toString());
         this.plants.add(pl);
     }
+
+    public void addZombie(Zombie zm)
+    {
+        this.zombies.add(zm);
+    }
+
+    public void addPea(Pea p){this.peas.add(p);}
+
+    public void remove_pea(Pea p){this.peas.remove(p);}
+
 
 }
