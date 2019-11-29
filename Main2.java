@@ -15,9 +15,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -59,7 +57,7 @@ public class Main2 extends Application {
 
 
         long tmp=System.nanoTime();
-        final long[] star = {tmp,tmp,tmp};
+        final long[] star = {tmp,tmp,tmp,tmp};
 
         initialise_play_game();
         LevelStatus level=game.get_level();
@@ -82,6 +80,7 @@ public class Main2 extends Application {
                     game.one_second();
                     PlayGameController.handle_plants_button(game.which_plants_available());
                     spawn_sun_tokens();
+
                     star[1]= now;
                 }
                 if(now-star[2]>level.getTime()*1e9)
@@ -101,16 +100,24 @@ public class Main2 extends Application {
                     mp.put(yf, mp.get(yf)-1);
                     star[2]=now;
                 }
+                if(now-star[3]>3e9)
+                {
+                    peashooting();
+                    star[3]=now;
+                }
+
                 move_zombies(0.5);
                 ArrayList<Pea> tmp=new ArrayList<>();
-                pea_im.forEach((k,v)->{
-                    if(k.CheckCollision(game.getZombies(),v))
+                for (Map.Entry<Pea, ImageView> entry : pea_im.entrySet()) {
+                    Pea k = entry.getKey();
+                    ImageView v = entry.getValue();
+                    if (k.CheckCollision(game.getZombies(), v))
                         tmp.add(k);
-                });
+                }
+
                 ZombieCollideWithPLant(game.getPlants(), game.getZombies());
                 move_lawn_mover(5);
-
-
+                move_pea(4);
             }
         }.start();
 
@@ -173,6 +180,7 @@ public class Main2 extends Application {
 
     public static void spawn_zombie(int y,int type)
     {
+        System.out.println("Y= "+y+" TYPE= "+type);
         Zombie zm=null;
         ImageView iv=new ImageView();
         if(type==1) {
@@ -191,18 +199,19 @@ public class Main2 extends Application {
         statgame.addZombie(zm);
         PlayGameController.statmain.getChildren().add(iv);
         ShouldZombieStop.put(zm, false);
+
     }
 
     public static void spawn_pea(int x,int y)
     {
-
+        System.out.println("hahds");
         Pea pea=new Pea(320+90*x,y);
         ImageView iv=new ImageView();
         iv.setImage(Pea.im);
         iv.setFitWidth(25);
         iv.setFitHeight(25);
         iv.setLayoutX(320+90*x);
-        iv.setLayoutY(130+120*y);
+        iv.setLayoutY(170+120*y);
         pea_im.put(pea,iv);
         statgame.addPea(pea);
         PlayGameController.statmain.getChildren().add(iv);
@@ -319,6 +328,35 @@ public class Main2 extends Application {
                 remove_plant(ar.get(i));
             }
 
+    }
+
+    public static void peashooting()
+    {
+        ArrayList<Plant> ar=statgame.getPlants();
+        for(int i=ar.size()-1;i>=0;i--)
+        {
+            Plant pl=ar.get(i);
+            boolean flag = false;
+            for(int j = 0; j<statgame.getZombies().size(); j++){
+                if(statgame.getZombies().get(j).getY()== pl.getY()) {
+                    flag = true;
+                    break;
+                }
+            }
+            if(flag && pl.getClass().getName().equals(Peashooter.class.getName()))
+            {
+                int x1=330+90*pl.getX(),y1=130+120*pl.getY();
+                System.out.println(y1+" "+x1);
+                spawn_pea(pl.getX(),pl.getY());
+            }
+        }
+    }
+
+    public static void serialize(GameStatus gs) throws IOException{
+        ObjectOutputStream out = null;
+        try{
+            out = new ObjectOutputStream( new FileOutputStream());
+        }
     }
 
     public static void main(String[] args) {
