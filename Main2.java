@@ -42,7 +42,7 @@ public class Main2 extends Application {
     public void start(Stage primaryStage) throws Exception {
 
 
-        BufferedReader br = new BufferedReader(new FileReader("/home/tejas/IdeaProjects/ap/src/sample/path.txt"));
+        BufferedReader br = new BufferedReader(new FileReader("/Users/pawanmehan/ap_project/src/sample/path.txt"));
         path=br.readLine();
 
         GameStatus game=new GameStatus("Player",1);
@@ -212,6 +212,8 @@ public class Main2 extends Application {
             moving_lawn_mover.add(PlayGameController.get_lawn_mover(y));
             statgame.remove_availability(y);
         }
+        else
+            System.out.println("GAME LOST");
 
     }
 
