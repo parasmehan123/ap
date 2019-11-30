@@ -5,7 +5,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,17 +25,22 @@ public class WaitingPageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         bar.setProgress(0);
-        final long[] star = {System.nanoTime()};
+        long tmp=System.nanoTime();
+        //Media media = new Media(new File("/Users/pawanmehan/ap_project/src/sample/images/mario_game_over.mp3").toURI().toString());
+        //MediaPlayer mediaPlayer = new MediaPlayer(media);
+
+        //System.out.println(url.toString());
+        final long[] star = {tmp,tmp};
+        final boolean[] flag = {true};
         new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if(now- star[0] >5e7)
+                if(now- star[0] >5e8)
                 {
-                    bar.setProgress(bar.getProgress()+0.05);
+                    bar.setProgress(bar.getProgress()+0.1);
                     star[0] =now;
                 }
-                if(bar.getProgress()>=1)
-                {
+                if(now-star[1]>5e9){
                     System.out.println("hahaha");
                     try {
                         Main1.ob.show_screen("Level.fxml");

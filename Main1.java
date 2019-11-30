@@ -8,6 +8,9 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -31,6 +34,9 @@ public class Main1 extends Application {
         BufferedReader br = new BufferedReader(new FileReader("/Users/pawanmehan/ap_project/src/sample/path.txt"));
         path=br.readLine();
         stat_primaryStage=primaryStage;
+        //AudioClip note=new AudioClip(this.getClass().getResource("mario_game_over.mp3").toString());
+        //note.play();
+//        mediaPlayer.play();
         ob.show_screen("MainMenu.fxml");
 
     }
