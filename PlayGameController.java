@@ -3,7 +3,6 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -52,10 +51,6 @@ public class PlayGameController implements Initializable {
 
     private static GameStatus game;
 
-    @FXML
-    private ProgressBar progress_bar;
-    private static ProgressBar stat_progress_bar;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -67,7 +62,6 @@ public class PlayGameController implements Initializable {
         stat_stop_pea=stop_pea;
         stat_stop_walnut=stop_walnut;
         stat_sun_token_display=sun_token_display;
-        stat_progress_bar=progress_bar;
 
         stat_mover1=mover1;
         stat_mover2=mover2;
@@ -84,8 +78,9 @@ public class PlayGameController implements Initializable {
         lawn_movers=new ArrayList<>();
         init_lawn_movers();
         set_sun_tokens_display(game.getSun_tokens_collected());
+
         handle_plants_button(game.which_plants_available());
-        progress_bar.setProgress(0);
+
     }
 
     @FXML
@@ -140,15 +135,15 @@ public class PlayGameController implements Initializable {
             stat_stop_pea.setVisible(true);
         else
             stat_stop_pea.setVisible(false);
-        if(!plant_available.get("Walnut"))
+        if(!(plant_available.get("Walnut")&& game.get_level().getNum()>=4))
             stat_stop_walnut.setVisible(true);
         else
             stat_stop_walnut.setVisible(false);
-        if(!plant_available.get("Cherrybomb"))
+        if(!(plant_available.get("Cherrybomb")&& game.get_level().getNum()>=3))
             stat_stop_cherry.setVisible(true);
         else
             stat_stop_cherry.setVisible(false);
-        if(!plant_available.get("SunFlower"))
+        if(!(plant_available.get("SunFlower") && game.get_level().getNum()>=2))
             stat_stop_sun.setVisible(true);
         else
             stat_stop_sun.setVisible(false);
@@ -193,11 +188,6 @@ public class PlayGameController implements Initializable {
     public static void set_sun_tokens_display(int i)
     {
         stat_sun_token_display.setText(String.valueOf(i));
-    }
-
-    public static void change_progress(double i)
-    {
-        stat_progress_bar.setProgress(i);
     }
 
 }

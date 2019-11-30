@@ -6,13 +6,13 @@ import java.util.Map;
 
 public class LevelStatus implements Serializable {
 
-    private final int no,time;
+    private final int num,time;
     private HashMap<Integer,Integer> rem;
     private double progress;
 
-    protected LevelStatus(int no,HashMap<Integer,Integer> rem,int time)
+    protected LevelStatus(HashMap<Integer,Integer> rem,int time,int num)
     {
-        this.no=no;
+        this.num=num;
         this.rem=rem;
         this.time=time;
         this.progress=0;

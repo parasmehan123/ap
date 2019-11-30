@@ -11,7 +11,7 @@ public class Zombie extends Character{
     static
     {
         String path=Main2.path;
-        normal_image=Helper.getImage(path+"TheAdvancing_zombie.gif");
+        normal_image=Helper.getImage(path+"normal_aombie.gif");
         conehead_image=Helper.getImage(path+"Conehead_Zombie.gif");;
     }
 
