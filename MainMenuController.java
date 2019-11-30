@@ -30,41 +30,26 @@ public class MainMenuController implements Initializable {
     @FXML
     private void startNewGamePressed(ActionEvent event) throws IOException {
 
-        Parent root=FXMLLoader.load(getClass().getResource("Login.fxml"));
-        Scene sc=new Scene(root);
-        Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Main_window.setScene(sc);
-        Main_window.show();
+        Main1.ob.show_screen("Login.fxml");
     }
 
     @FXML
     private void loadGamePressed(ActionEvent event) throws IOException
     {
-        Parent root=FXMLLoader.load(getClass().getResource("LoadGame.fxml"));
-        Scene sc=new Scene(root);
-        Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Main_window.setScene(sc);
-        Main_window.show();
+        Main1.ob.show_screen("LoadGame.fxml");
     }
 
     @FXML
     private void instructionsPressed(ActionEvent event) throws IOException
     {
-        Parent root=FXMLLoader.load(getClass().getResource("Instructions.fxml"));
-        Scene sc=new Scene(root);
-        Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Main_window.setScene(sc);
-        Main_window.show();
+        Main1.ob.show_screen("Instructions.fxml");
+
     }
 
     @FXML
     private void leaderPressed(ActionEvent event) throws IOException
     {
-        Parent root=FXMLLoader.load(getClass().getResource("LeaderBoard.fxml"));
-        Scene sc=new Scene(root);
-        Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Main_window.setScene(sc);
-        Main_window.show();
+        Main1.ob.show_screen("LeaderBoard.fxml");
     }
 
     @FXML
@@ -77,6 +62,7 @@ public class MainMenuController implements Initializable {
     @FXML
     private void chooselevel(ActionEvent event) throws IOException
     {
-        //TODO
+        Main2.statgame=new GameStatus("John Doe",Level5.getInstance());
+        Main1.ob.show_screen("Level.fxml");
     }
 }
