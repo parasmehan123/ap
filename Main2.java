@@ -218,7 +218,7 @@ public class Main2{
 
             tmp.setImage(pl.getIm());
             tmp.setFitWidth(100);
-            tmp.setFitHeight(150);
+            tmp.setFitHeight(100);
 
         }
         PlayGameController.sunflag=false;
@@ -250,7 +250,7 @@ public class Main2{
         iv.setFitWidth(100);
         iv.setFitHeight(150);
         iv.setLayoutX(zm.getX());
-        iv.setLayoutY(130+120*zm.getY());
+        iv.setLayoutY(120+120*zm.getY());
         zomb_im.put(zm,iv);
         PlayGameController.statmain.getChildren().add(iv);
         ShouldZombieStop.put(zm, false);
