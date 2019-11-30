@@ -7,16 +7,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LevelController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LevelController">
     <children>
-        <ImageView fx:id="background" fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="background" fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true">
             <image>
                 <Image url="@images/LEVEL_PAGE.png" />
             </image>
         </ImageView>
         <AnchorPane prefHeight="200.0" prefWidth="200.0">
             <children>
-                <Button ellipsisString="" layoutX="62.0" layoutY="879.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="159.0" prefWidth="150.0" style="-fx-background-color: transparent;" />
             <HBox layoutX="121.0" layoutY="314.0" prefHeight="139.0" prefWidth="819.0">
                <children>
                   <Button ellipsisString="" mnemonicParsing="false" onAction="#level1" prefHeight="138.0" prefWidth="477.0" style="-fx-background-color: transparent;">
@@ -61,7 +60,7 @@
                   </Button>
                   <Button ellipsisString="" mnemonicParsing="false" onAction="#level5" prefHeight="140.0" prefWidth="462.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="l5" fitHeight="250.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="l5" fitHeight="129.0" fitWidth="366.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/level5.png" />
                            </image>
@@ -91,12 +90,12 @@
                   <Image url="@images/stop.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="stop5" fitHeight="66.0" fitWidth="73.0" layoutX="1171.0" layoutY="474.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="stop5" fitHeight="66.0" fitWidth="73.0" layoutX="1143.0" layoutY="474.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/stop.png" />
                </image>
             </ImageView>
-            <Button ellipsisString="" layoutX="58.0" layoutY="880.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="159.0" prefWidth="158.0" style="-fx-background-color: transparent;" />
+            <Button ellipsisString="" layoutX="53.0" layoutY="651.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="114.0" prefWidth="104.0" style="-fx-background-color: transparent;" />
             </children></AnchorPane>
     </children>
 </StackPane>

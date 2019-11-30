@@ -1,6 +1,5 @@
 package sample;
 
-
 import javafx.animation.TranslateTransition;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;

@@ -23,7 +23,10 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class LeaderBoardController implements Initializable {
@@ -37,35 +40,39 @@ public class LeaderBoardController implements Initializable {
     @FXML
     private TableView table;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        //TODO
-        TableColumn rank=new TableColumn("Rank");
-        rank.setCellValueFactory(new PropertyValueFactory<Player, Integer>("rank"));
-
+        Gamestatuscomparator comp = new Gamestatuscomparator();
+        ArrayList<GameStatus> gg = null;
+        try {
+            gg = Main2.deserialise();
+            Collections.sort(gg, comp);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         TableColumn name=new TableColumn("Name");
         name.setMinWidth(250);
-        name.setCellValueFactory(new PropertyValueFactory<Player,String>("name"));
+        name.setCellValueFactory(new PropertyValueFactory<Player,String>("player"));
 
         TableColumn level=new TableColumn("Level");
-        level.setCellValueFactory(new PropertyValueFactory<Player, Integer>("level"));
+        level.setCellValueFactory(new PropertyValueFactory<Player, Integer>("num"));
 
-        TableColumn completed=new TableColumn("Completed");
-        completed.setMinWidth(250);
-        completed.setCellValueFactory(new PropertyValueFactory<Player, Boolean>("completed"));
+        TableColumn progress=new TableColumn("Progress");
+        progress.setMinWidth(250);
+        progress.setCellValueFactory(new PropertyValueFactory<Player, Double>("progress"));
 
         table.getColumns().clear();
-        table.getColumns().addAll(rank,name,level,completed);
-        ObservableList<Player> list=FXCollections.observableArrayList(
-                new Player(1,"Player1",5,true),
-                new Player(2,"Player2",5,false),
-                new Player(3,"Player3",4,true),
-                new Player(4,"Player4",4,false),
-                new Player(5,"Player5",1,true));
+        table.getColumns().addAll(name,level,progress);
+        ObservableList<GameStatus> list= FXCollections.observableArrayList();
+
+        System.out.println(gg.size());
+        for(GameStatus g:gg)
+        {
+            list.add(g);
+        }
 
         table.setItems(list);
-
 
     }
 

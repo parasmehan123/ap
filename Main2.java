@@ -112,7 +112,7 @@ public class Main2{
                     move_pea(4);
                     PlayGameController.setProgress(level.getProgress());
                     check_won(level);
-                    //throw new GameWonException("");
+                    //throw new GameLostException("");
                 } catch (GameLostException e)
                 {
                     System.out.println("Game Lost!!!!");
@@ -123,6 +123,7 @@ public class Main2{
                     } catch (IOException ex) {
                         ex.printStackTrace();
                     }
+
                     stop();
                 }catch (GameWonException e)
                 {

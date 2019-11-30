@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class InstructionsController implements Initializable {
+public class Instructions2Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -29,11 +29,6 @@ public class InstructionsController implements Initializable {
     @FXML
     private void backPressed(ActionEvent event) throws IOException
     {
-        Main1.ob.show_screen("MainMenu.fxml");
-    }
-    @FXML
-    private void frontPressed() throws IOException
-    {
-        Main1.ob.show_screen("Instructions2.fxml");
+        Main1.ob.show_screen("Instructions.fxml");
     }
 }
