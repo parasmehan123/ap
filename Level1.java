@@ -4,9 +4,9 @@ import java.util.HashMap;
 
 public class Level1 extends LevelStatus {
 
-    protected Level1(int no, HashMap<Integer,Integer> rem,int time)
+    protected Level1(HashMap<Integer,Integer> rem,int time)
     {
-        super(no,rem,time);
+        super(rem,time, 1);
     }
 
     public static Level1 getInstance()
@@ -14,6 +14,6 @@ public class Level1 extends LevelStatus {
         int no=10;
         HashMap<Integer,Integer> mp=new HashMap<>();
         mp.put(1,10);
-        return new Level1(no,mp,20);
+        return new Level1(mp,20);
     }
 }

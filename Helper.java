@@ -16,7 +16,9 @@ public class Helper {
         {
             FileInputStream fn=new FileInputStream(path);
             im=new Image(fn);
-        }catch (IOException E){}
+        }catch (IOException E){
+            System.out.println("Path is wrong "+path);
+        }
         return im;
     }
 

@@ -135,15 +135,15 @@ public class PlayGameController implements Initializable {
             stat_stop_pea.setVisible(true);
         else
             stat_stop_pea.setVisible(false);
-        if(!plant_available.get("Walnut"))
+        if(!(plant_available.get("Walnut")&& game.get_level().getNum()>=4))
             stat_stop_walnut.setVisible(true);
         else
             stat_stop_walnut.setVisible(false);
-        if(!plant_available.get("Cherrybomb"))
+        if(!(plant_available.get("Cherrybomb")&& game.get_level().getNum()>=3))
             stat_stop_cherry.setVisible(true);
         else
             stat_stop_cherry.setVisible(false);
-        if(!plant_available.get("SunFlower"))
+        if(!(plant_available.get("SunFlower") && game.get_level().getNum()>=2))
             stat_stop_sun.setVisible(true);
         else
             stat_stop_sun.setVisible(false);

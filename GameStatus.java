@@ -27,6 +27,9 @@ public class GameStatus implements Serializable
 
     private ArrayList<Boolean> lawn_mover;
 
+    public int getNum(){
+        return this.get_level().getNum();
+    }
     GameStatus(String player, LevelStatus level)
     {
         this.level = level;
