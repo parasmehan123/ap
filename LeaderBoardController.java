@@ -47,7 +47,7 @@ public class LeaderBoardController implements Initializable {
         ArrayList<GameStatus> gg = null;
         try {
             gg = Main2.deserialise();
-            Collections.sort(gg, comp);
+            gg.sort(comp);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

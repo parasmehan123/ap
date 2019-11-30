@@ -45,34 +45,48 @@ public class LevelController implements Initializable{
     }
 
     @FXML
-    private void level1(ActionEvent event) throws Exception
-    {
-        if(n>=1)
-            Main2.ob.play_game(new GameStatus(Main2.statgame.getPlayer(),Level1.getInstance()));
-    }
+    private void level1(ActionEvent event) throws Exception {
 
+        if (n >= 1) {
+            WaitingPageController.game = new GameStatus(Main2.statgame.getPlayer(), Level1.getInstance());
+            Main1.ob.show_screen("WaitingPage.fxml");
+
+        }
+    }
     @FXML
     private void level2() throws Exception {
         if(n>=2)
-            Main2.ob.play_game(new GameStatus(Main2.statgame.getPlayer(),Level2.getInstance()));
+        {
+            WaitingPageController.game=new GameStatus(Main2.statgame.getPlayer(),Level2.getInstance());
+            Main1.ob.show_screen("WaitingPage.fxml");
+        }
     }
 
     @FXML
     private void level3() throws Exception {
         if(n>=3)
-            Main2.ob.play_game(new GameStatus(Main2.statgame.getPlayer(),Level3.getInstance()));
+        {
+            WaitingPageController.game=new GameStatus(Main2.statgame.getPlayer(),Level3.getInstance());
+            Main1.ob.show_screen("WaitingPage.fxml");
+        }
     }
 
     @FXML
     private void level4() throws Exception {
         if(n>=4)
-            Main2.ob.play_game(new GameStatus(Main2.statgame.getPlayer(),Level4.getInstance()));
+        {
+            WaitingPageController.game=new GameStatus(Main2.statgame.getPlayer(),Level4.getInstance());
+            Main1.ob.show_screen("WaitingPage.fxml");
+        }
     }
 
     @FXML
     private void level5() throws Exception {
         if(n==5)
-            Main2.ob.play_game(new GameStatus(Main2.statgame.getPlayer(),Level5.getInstance()));
+        {
+            WaitingPageController.game=new GameStatus(Main2.statgame.getPlayer(),Level5.getInstance());
+            Main1.ob.show_screen("WaitingPage.fxml");
+        }
     }
 
     @FXML

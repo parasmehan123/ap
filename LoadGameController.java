@@ -74,7 +74,8 @@ public class LoadGameController implements Initializable{
     private void continuePressed(ActionEvent event) throws Exception
     {
         GameStatus selected=(GameStatus) table.getSelectionModel().getSelectedItem();
-        Main2.ob.play_game(selected);
+        WaitingPageController.game=selected;
+        Main1.ob.show_screen("WaitingPage.fxml");
     }
 
     @FXML

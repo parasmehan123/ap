@@ -42,7 +42,6 @@ public class Main1 extends Application {
         stat_primaryStage.show();
         stat_primaryStage.setResizable(false);
     }
-    //TODO - PEA
 
     public static void main(String[] args)throws IOException {
         launch(args);

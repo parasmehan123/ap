@@ -34,7 +34,6 @@ public class Main2{
 
     public void play_game(GameStatus game) throws Exception {
 
-        //TODO - save lawn mover
 
         statgame=game;
         System.out.println("No of tokens:"+game.getSun_tokens_collected());
@@ -117,7 +116,7 @@ public class Main2{
                 {
                     System.out.println("Game Lost!!!!");
                     //statstage.close();
-                    //TODO
+
                     try {
                         Main1.ob.show_screen("GameLostPage.fxml");
                     } catch (IOException ex) {
@@ -162,7 +161,7 @@ public class Main2{
             ImageView tmp = PlayGameController.ln.plants.get(pl.getY()).get(pl.getX());
             tmp.setImage(pl.getIm());
             tmp.setFitWidth(100);
-            tmp.setFitHeight(150);
+            tmp.setFitHeight(100);
         }
 
         ArrayList<Pea> peas=statgame.getPeas();
@@ -183,14 +182,14 @@ public class Main2{
 
 
         //new String[]{"Peashooter", "Walnut", "Cherrybomb", "SunFlower"}))
-        if(sunflag==true && cherryflag==false && peaflag==false && walnutflag==false && avail.get("SunFlower") && tmp.getImage()==null)
+        if(sunflag==true && cherryflag==false && peaflag==false && walnutflag==false && avail.get("SunFlower") && tmp.getImage()==null && statgame.get_level().getNum()>=2)
         {
             flag=true;
             pl=new SunFlower(x,y);
             statgame.increase_time("SunFlower",10);
             statgame.decrase_sun_tokens_collected(statgame.getPrice("SunFlower"));
         }
-        else if(cherryflag==true && sunflag==false && peaflag==false && walnutflag==false && avail.get("Cherrybomb") && tmp.getImage()==null)
+        else if(cherryflag==true && sunflag==false && peaflag==false && walnutflag==false && avail.get("Cherrybomb") && tmp.getImage()==null && statgame.get_level().getNum()>=4)
         {
             flag=true;
             pl=new Cherrybomb(x,y);
@@ -205,7 +204,7 @@ public class Main2{
             statgame.decrase_sun_tokens_collected(statgame.getPrice("Peashooter"));
 
         }
-        else if(walnutflag==true && sunflag==false && cherryflag==false && peaflag==false && avail.get("Walnut") && tmp.getImage()==null)
+        else if(walnutflag==true && sunflag==false && cherryflag==false && peaflag==false && avail.get("Walnut") && tmp.getImage()==null && statgame.get_level().getNum()>=3)
         {
             flag=true;
             pl=new Walnut(x,y);

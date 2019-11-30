@@ -33,21 +33,15 @@ public class LoginController implements Initializable {
     @FXML
     private void continuePressed(ActionEvent event) throws Exception
     {
-        Parent root= FXMLLoader.load(getClass().getResource("Level.fxml"));
-        Scene sc=new Scene(root);
-        Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Main_window.setScene(sc);
-        Main_window.show();
         String text;
         while(true)
         {
             text=username.getText();
-            if(text!=null)
+            if(text!="")
                 break;
         }
-        GameStatus new_game=new GameStatus(text,Level1.getInstance());
-
-        Main2.ob.play_game(new_game);
+        Main2.statgame=new GameStatus(text,Level1.getInstance());
+        Main1.ob.show_screen("Level.fxml");
     }
 
     @FXML

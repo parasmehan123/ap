@@ -44,9 +44,9 @@
                </rowConstraints>
             </GridPane>
             <Button ellipsisString="" layoutX="103.0" layoutY="310.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
-            <StackPane layoutX="14.0" layoutY="185.0" prefHeight="559.0" prefWidth="142.0">
+            <StackPane layoutX="14.0" layoutY="159.0" prefHeight="631.0" prefWidth="142.0">
                <children>
-                  <ImageView fitHeight="598.0" fitWidth="142.0" pickOnBounds="true">
+                  <ImageView fitHeight="632.0" fitWidth="142.0" pickOnBounds="true">
                      <image>
                         <Image url="@images/wood.png" />
                      </image>
@@ -61,7 +61,10 @@
                                  </image></ImageView>
                            </graphic>
                         </Button>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="141.22900390625" />
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="141.22900390625">
+                           <font>
+                              <Font size="28.0" />
+                           </font></Text>
                         <Button ellipsisString="" mnemonicParsing="false" onAction="#cherryButton" prefHeight="126.0" prefWidth="142.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <ImageView fx:id="cherry1" fitHeight="111.0" fitWidth="112.0" pickOnBounds="true">
@@ -70,7 +73,10 @@
                                  </image></ImageView>
                            </graphic>
                         </Button>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="141.22900390625" />
+                        <Text fill="#f8f4f4" strokeType="OUTSIDE" strokeWidth="0.0" text="6" textAlignment="CENTER" wrappingWidth="141.22900390625">
+                           <font>
+                              <Font size="28.0" />
+                           </font></Text>
                         <Button ellipsisString="" mnemonicParsing="false" onAction="#peaButton" prefHeight="126.0" prefWidth="142.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <ImageView fx:id="pea1" fitHeight="103.0" fitWidth="118.0" pickOnBounds="true">
@@ -80,7 +86,10 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="141.22900390625" />
+                        <Text fill="#fffdfd" strokeType="OUTSIDE" strokeWidth="0.0" text="4" textAlignment="CENTER" wrappingWidth="141.22900390625">
+                           <font>
+                              <Font size="28.0" />
+                           </font></Text>
                         <Button ellipsisString="" mnemonicParsing="false" onAction="#walnutButton" prefHeight="128.0" prefWidth="144.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <ImageView fx:id="walnut1" fitHeight="125.0" fitWidth="116.0" pickOnBounds="true">
@@ -89,28 +98,31 @@
                                  </image></ImageView>
                            </graphic>
                         </Button>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="141.22900390625" />
+                        <Text fill="#fffdfd" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="141.22900390625">
+                           <font>
+                              <Font size="28.0" />
+                           </font></Text>
                      </children>
                   </VBox>
                </children>
             </StackPane>
             <Text fx:id="tmp" layoutX="50.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-            <ImageView fx:id="stop_sun" fitHeight="116.0" fitWidth="192.0" layoutX="20.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="stop_sun" fitHeight="75.0" fitWidth="90.0" layoutX="40.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/stop.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="stop_pea" fitHeight="116.0" fitWidth="192.0" layoutX="20.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="stop_pea" fitHeight="70.0" fitWidth="90.0" layoutX="40.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/stop.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="stop_walnut" fitHeight="116.0" fitWidth="192.0" layoutX="20.0" layoutY="625.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="stop_walnut" fitHeight="70.0" fitWidth="90.0" layoutX="40.0" layoutY="650.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/stop.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="stop_cherry" fitHeight="116.0" fitWidth="192.0" layoutX="20.0" layoutY="330.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="stop_cherry" fitHeight="70.0" fitWidth="90.0" layoutX="40.0" layoutY="370.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/stop.png" />
                </image>
@@ -163,7 +175,7 @@
                   </HBox>
                </children>
             </StackPane>
-            <Button ellipsisString="" layoutX="850.0" layoutY="25.0" mnemonicParsing="false" onAction="#pause_button_clicked" prefHeight="61.0" prefWidth="120.0" style="-fx-background-color: transparent;">
+            <Button ellipsisString="" layoutX="1024.0" layoutY="112.0" mnemonicParsing="false" onAction="#pause_button_clicked" prefHeight="61.0" prefWidth="120.0" style="-fx-background-color: transparent;">
                <graphic>
                   <ImageView fitHeight="83.0" fitWidth="114.0" pickOnBounds="true">
                      <image>
@@ -175,7 +187,7 @@
             <ProgressBar fx:id="progress_bar" layoutX="293.0" layoutY="30.0" prefHeight="27.0" prefWidth="306.0" progress="0.0" />
             <Button ellipsisString="" layoutX="1000.0" layoutY="25.0" mnemonicParsing="false" onAction="#exit_game_button_pressed" prefHeight="61.0" prefWidth="120.0" style="-fx-background-color: transparent;">
                <graphic>
-                  <ImageView fitHeight="83.0" fitWidth="162.0" pickOnBounds="true">
+                  <ImageView fitHeight="59.0" fitWidth="162.0" pickOnBounds="true">
                      <image>
                         <Image url="@images/EXIT_BUTTON.png" />
                      </image>
