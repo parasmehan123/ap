@@ -21,6 +21,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class LoadGameController implements Initializable{
@@ -36,35 +37,33 @@ public class LoadGameController implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        try
-//        {
-//            FileInputStream fn=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/SAVED_GAME.png");
-//            background.setImage(new Image(fn));
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-        TableColumn rank=new TableColumn("Rank");
-        rank.setCellValueFactory(new PropertyValueFactory<Player, Integer>("rank"));
 
         TableColumn name=new TableColumn("Name");
         name.setMinWidth(250);
-        name.setCellValueFactory(new PropertyValueFactory<Player,String>("name"));
+        name.setCellValueFactory(new PropertyValueFactory<Player,String>("player"));
 
         TableColumn level=new TableColumn("Level");
-        level.setCellValueFactory(new PropertyValueFactory<Player, Integer>("level"));
+        level.setCellValueFactory(new PropertyValueFactory<Player, Integer>("num"));
 
-        TableColumn completed=new TableColumn("Completed");
-        completed.setMinWidth(250);
-        completed.setCellValueFactory(new PropertyValueFactory<Player, Boolean>("completed"));
+        TableColumn progress=new TableColumn("Progress");
+        progress.setMinWidth(250);
+        progress.setCellValueFactory(new PropertyValueFactory<Player, Double>("progress"));
 
         table.getColumns().clear();
-        table.getColumns().addAll(rank,name,level,completed);
-        ObservableList<Player> list= FXCollections.observableArrayList(
-                new Player(1,"Player1",5,true),
-                new Player(2,"Player2",5,false),
-                new Player(3,"Player3",4,true),
-                new Player(4,"Player4",4,false),
-                new Player(5,"Player5",1,true));
+        table.getColumns().addAll(name,level,progress);
+        ObservableList<GameStatus> list= FXCollections.observableArrayList();
+        ArrayList<GameStatus> ar=null;
+        try {
+            ar=Main2.deserialise();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        for(GameStatus g:ar)
+        {
+            list.add(g);
+        }
 
         table.setItems(list);
 
@@ -79,8 +78,8 @@ public class LoadGameController implements Initializable{
         Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         Main_window.setScene(sc);
         Main_window.show();
-//        Player selected=(Player) table.getSelectionModel().getSelectedItem();
-//        System.out.println("Player with rank "+selected.getRank()+" selected.");
+        GameStatus selected=(GameStatus) table.getSelectionModel().getSelectedItem();
+        System.out.println("Player with rank "+selected.getPlayer()+" selected.");
     }
 
     @FXML

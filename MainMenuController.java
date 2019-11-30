@@ -22,35 +22,8 @@ import java.util.ResourceBundle;
 
 public class MainMenuController implements Initializable {
 
-    @FXML
-    private StackPane rootPane;
-
-    @FXML
-    private ImageView background,start_game,resume_game,instructions,leaderboard,exit,chooselevel;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        //        try {
-        //            FileInputStream fn1=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/MAIN_PAGE.png");
-        //            background.setImage(new Image(fn1));
-        //            FileInputStream fn2=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/START_NEW_GAME.png");
-        //            start_game.setImage(new Image(fn2));
-        //            FileInputStream fn3=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/load_game.png");
-        //            resume_game.setImage(new Image(fn3));
-        //            FileInputStream fn4=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/INSTRUCTION_MAIN_BUTTON.png");
-        //            instructions.setImage(new Image(fn4));
-        //            FileInputStream fn5=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/LEADERBOARDS_BUTTON.png");
-        //            leaderboard.setImage(new Image(fn5));
-        //            FileInputStream fn6=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/EXIT_BUTTON.png");
-        //            exit.setImage(new Image(fn6));
-        //            FileInputStream fn7=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/choose_level.png");
-        //            chooselevel.setImage(new Image(fn7));
-        //
-        //        } catch (FileNotFoundException e) {
-        //            e.printStackTrace();
-        //        }
-
 
     }
 
@@ -65,7 +38,7 @@ public class MainMenuController implements Initializable {
     }
 
     @FXML
-    private void resumeGamePressed(ActionEvent event) throws IOException
+    private void loadGamePressed(ActionEvent event) throws IOException
     {
         Parent root=FXMLLoader.load(getClass().getResource("LoadGame.fxml"));
         Scene sc=new Scene(root);
@@ -99,5 +72,11 @@ public class MainMenuController implements Initializable {
     {
         ((Stage) ((Node)event.getSource()).getScene().getWindow()).close();
 
+    }
+
+    @FXML
+    private void chooselevel(ActionEvent event) throws IOException
+    {
+        //TODO
     }
 }

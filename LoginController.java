@@ -28,14 +28,6 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        FileInputStream fn= null;
-        //        try {
-        //            fn = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/login_page.png");
-        //        } catch (FileNotFoundException e) {
-        //            e.printStackTrace();
-        //        }
-        background.setImage(new Image(fn));
-
     }
 
     @FXML
@@ -46,8 +38,15 @@ public class LoginController implements Initializable {
         Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
         Main_window.setScene(sc);
         Main_window.show();
-//        Player selected=(Player) table.getSelectionModel().getSelectedItem();
-//        System.out.println("Player with rank "+selected.getRank()+" selected.");
+        String text;
+        while(true)
+        {
+            text=username.getText();
+            if(text!=null)
+                break;
+        }
+        GameStatus new_game=new GameStatus(text,Level1.getInstance());
+        Main2.play_game(new_game);
     }
 
     @FXML
@@ -59,4 +58,5 @@ public class LoginController implements Initializable {
         Main_window.setScene(sc);
         Main_window.show();
     }
+
 }

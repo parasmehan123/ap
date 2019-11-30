@@ -7,38 +7,38 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainMenuController">
+<StackPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainMenuController">
    <children>
-      <ImageView fx:id="background" fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="background" fitHeight="800.0" fitWidth="1200.0" pickOnBounds="true">
          <image>
             <Image url="@images/MAIN_PAGE.png" />
          </image>
       </ImageView>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <HBox layoutX="268.0" layoutY="373.0" prefHeight="100.0" prefWidth="200.0">
+            <HBox layoutX="326.0" layoutY="373.0" prefHeight="67.0" prefWidth="1200.0">
                <children>
-                  <Button ellipsisString="" mnemonicParsing="false" onAction="#startNewGamePressed" prefHeight="96.0" prefWidth="468.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#startNewGamePressed" prefHeight="88.0" prefWidth="400.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="start_game" fitHeight="97.0" fitWidth="450.0" pickOnBounds="true">
+                        <ImageView fitHeight="78.0" fitWidth="380.0" pickOnBounds="true">
                            <image>
                               <Image url="@images/START_NEW_GAME.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button ellipsisString="" mnemonicParsing="false" onAction="#resumeGamePressed" prefHeight="116.0" prefWidth="342.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#loadGamePressed" prefHeight="78.0" prefWidth="321.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="resume_game" fitHeight="67.0" fitWidth="327.0" pickOnBounds="true">
+                        <ImageView fitHeight="53.0" fitWidth="284.0" pickOnBounds="true">
                            <image>
                               <Image url="@images/load_game.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button ellipsisString="" mnemonicParsing="false" onAction="#instructionsPressed" prefHeight="100.0" prefWidth="468.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#instructionsPressed" prefHeight="115.0" prefWidth="424.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="instructions" fitHeight="180.0" fitWidth="450.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="97.0" fitWidth="373.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/INSTRUCTION_MAIN_BUTTON.png" />
                            </image>
@@ -47,29 +47,29 @@
                   </Button>
                </children>
             </HBox>
-            <HBox layoutX="386.0" layoutY="584.0" prefHeight="100.0" prefWidth="200.0">
+            <HBox layoutX="291.0" layoutY="584.0" prefHeight="111.0" prefWidth="1405.0">
                <children>
-                  <Button ellipsisString="" mnemonicParsing="false" onAction="#leaderPressed" prefHeight="183.0" prefWidth="517.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#leaderPressed" prefHeight="102.0" prefWidth="396.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="leaderboard" fitHeight="167.0" fitWidth="499.0" pickOnBounds="true">
+                        <ImageView fitHeight="118.0" fitWidth="378.0" pickOnBounds="true">
                            <image>
                               <Image url="@images/LEADERBOARDS_BUTTON.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button ellipsisString="" mnemonicParsing="false" onAction="#exitPressed" prefHeight="168.0" prefWidth="449.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#exitPressed" prefHeight="112.0" prefWidth="343.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="exit" fitHeight="97.0" fitWidth="371.0" pickOnBounds="true">
+                        <ImageView fitHeight="61.0" fitWidth="301.0" pickOnBounds="true">
                            <image>
                               <Image url="@images/EXIT_BUTTON.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button ellipsisString="" mnemonicParsing="false" onAction="#leaderPressed" prefHeight="183.0" prefWidth="517.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#chooselevel" prefHeight="124.0" prefWidth="405.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="chooselevel" fitHeight="87.0" fitWidth="499.0" pickOnBounds="true">
+                        <ImageView fitHeight="60.0" fitWidth="377.0" pickOnBounds="true">
                            <image>
                               <Image url="@images/choose_level.png" />
                            </image>

@@ -446,6 +446,12 @@ public class Main2 extends Application {
         return reto;
     }
 
+    //TODO
+    public static void play_game(GameStatus game)
+    {
+
+    }
+
     public static void main(String[] args) {
         launch(args);
     }

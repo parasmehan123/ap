@@ -16,26 +16,26 @@ import javafx.util.Duration;
 import java.io.*;
 import java.util.ArrayList;
 
-public class Main1{
-
-//    @Override
-//    public void start(Stage primaryStage) throws Exception {
-//
-//        Parent root=FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
-//        primaryStage.setTitle("PlantsVsZombies");
-//        primaryStage.setScene(new Scene(root));
-//        primaryStage.show();
-
-//        BufferedReader br=new BufferedReader(new FileReader("/Users/pawanmehan/ap_project/src/sample/path.txt"));
-//        System.out.println(br.readLine());
+public class Main1 extends Application {
 
 
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+
+        Parent root = FXMLLoader.load(getClass().getResource("LoadGame.fxml"));
+        primaryStage.setTitle("PlantsVsZombies");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+        primaryStage.setResizable(false);
+
+    }
 
 
     public static void main(String[] args)throws IOException {
-//        launchnch(args);
+        launch(args);
 
 
+        /*
         ArrayList<GameStatus> gs = new ArrayList<>();
         ObjectOutputStream out = null;
         try{
@@ -50,5 +50,8 @@ public class Main1{
                 out.close();
             }
         }
+        */
+
     }
+
 }
