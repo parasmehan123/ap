@@ -8,6 +8,7 @@ import java.util.Map;
 
 public class GameStatus implements Serializable
 {
+
     private final String player;
 
     private LevelStatus level;
@@ -26,6 +27,9 @@ public class GameStatus implements Serializable
 
     private ArrayList<Boolean> lawn_mover;
 
+    public int getNum(){
+        return this.get_level().getNum();
+    }
     GameStatus(String player, LevelStatus level)
     {
         this.level = level;
@@ -139,14 +143,4 @@ public class GameStatus implements Serializable
     public int getPrice(String na){
         return this.price.get(na);
     }
-
-    public String getPlayer() {
-        return player;
-    }
-
-    public double getProgress() {
-        return this.level.getProgress();
-    }
-
-
 }
