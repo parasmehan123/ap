@@ -21,7 +21,7 @@ public class SunFlower extends Plant {
 
     public SunFlower(int x, int y)
     {
-        super(x,y,100);
+        super(x,y,70);
         this.timetonextSun=10;
 
     }

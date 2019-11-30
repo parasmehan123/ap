@@ -3,6 +3,7 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -51,6 +52,10 @@ public class PlayGameController implements Initializable {
 
     private static GameStatus game;
 
+    @FXML
+    private ProgressBar progress_bar;
+    private static ProgressBar stat_progress_bar;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -62,6 +67,7 @@ public class PlayGameController implements Initializable {
         stat_stop_pea=stop_pea;
         stat_stop_walnut=stop_walnut;
         stat_sun_token_display=sun_token_display;
+        stat_progress_bar=progress_bar;
 
         stat_mover1=mover1;
         stat_mover2=mover2;
@@ -190,4 +196,6 @@ public class PlayGameController implements Initializable {
         stat_sun_token_display.setText(String.valueOf(i));
     }
 
+    public static void setProgress(double i){
+        stat_progress_bar.setProgress(i);}
 }

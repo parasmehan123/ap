@@ -36,7 +36,7 @@ public class Main2 extends Application {
 
         //TODO - save lawn mover
 
-        BufferedReader br = new BufferedReader(new FileReader("/home/tejas/IdeaProjects/ap/src/sample/path.txt\""));
+        BufferedReader br = new BufferedReader(new FileReader("/Users/pawanmehan/ap_project/src/sample/path.txt"));
         path=br.readLine();
 
         ArrayList<GameStatus> save=deserialise();
@@ -44,7 +44,7 @@ public class Main2 extends Application {
         if(save.size()==0)
         {
             System.out.println("YES1");
-            game=new GameStatus("Player",Level1.getInstance());
+            game=new GameStatus("Player",Level5.getInstance());
             save.add(game);
         }
         else
@@ -138,6 +138,7 @@ public class Main2 extends Application {
                 ZombieCollideWithPLant(statgame.getPlants(), statgame.getZombies());
                 move_lawn_mover(5);
                 move_pea(4);
+                PlayGameController.setProgress(level.getProgress());
             }
         }.start();
 
@@ -228,9 +229,9 @@ public class Main2 extends Application {
         if(zm==null)
         {
             if(type==1)
-                zm = new Zombie(x, y, 100, 10,1);
+                zm = new Zombie(x, y, 100, 8,1);
             else if(type==2)
-                zm = new Zombie(x, y, 100, 10,2);
+                zm = new Zombie(x, y, 150, 10,2);
             statgame.addZombie(zm);
         }
 
@@ -241,7 +242,7 @@ public class Main2 extends Application {
         else {
             iv.setImage(Zombie.conehead_image);
         }
-        iv.setFitWidth(150);
+        iv.setFitWidth(100);
         iv.setFitHeight(150);
         iv.setLayoutX(zm.getX());
         iv.setLayoutY(130+120*zm.getY());
@@ -422,7 +423,7 @@ public class Main2 extends Application {
     public static void serialize(ArrayList<GameStatus> gs) throws IOException, ClassNotFoundException {
         ObjectOutputStream out = null;
         try{
-            out = new ObjectOutputStream( new FileOutputStream("/home/tejas/IdeaProjects/ap/src/sample/save.txt"));
+            out = new ObjectOutputStream( new FileOutputStream("/Users/pawanmehan/ap_project/src/sample/save.txt"));
             out.writeObject(gs);
         }
         finally {
@@ -435,7 +436,7 @@ public class Main2 extends Application {
         ArrayList<GameStatus> reto = null;
         ObjectInputStream in = null;
         try{
-            in = new ObjectInputStream(new FileInputStream("/home/tejas/IdeaProjects/ap/src/sample/save.txt"));
+            in = new ObjectInputStream(new FileInputStream("/Users/pawanmehan/ap_project/src/sample/save.txt"));
             reto = (ArrayList<GameStatus>)in.readObject();
         }
         finally {

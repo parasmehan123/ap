@@ -15,6 +15,6 @@ public class Level4 extends LevelStatus {
         HashMap<Integer,Integer> mp=new HashMap<>();
         mp.put(1,10);mp.put(2,8);
 
-        return new Level4(mp,16);
+        return new Level4(mp,14);
     }
 }

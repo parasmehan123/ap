@@ -17,7 +17,7 @@ public class Walnut extends Plant {
 
     public Walnut(int x, int y)
     {
-        super(x,y,100);
+        super(x,y,300);
 
     }
 

@@ -79,7 +79,7 @@ public class LoadGameController implements Initializable{
         Main_window.setScene(sc);
         Main_window.show();
         GameStatus selected=(GameStatus) table.getSelectionModel().getSelectedItem();
-        System.out.println("Player with rank "+selected.getPlayer()+" selected.");
+        System.out.println("Player with rank " + selected.getPlayer() + " selected.");
     }
 
     @FXML

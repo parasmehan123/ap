@@ -35,11 +35,12 @@ public class Main1 extends Application {
         launch(args);
 
 
+
         /*
         ArrayList<GameStatus> gs = new ArrayList<>();
         ObjectOutputStream out = null;
         try{
-            out  = new ObjectOutputStream(new FileOutputStream("/home/tejas/IdeaProjects/ap/src/sample/save.txt"));
+            out  = new ObjectOutputStream(new FileOutputStream("/Users/pawanmehan/ap_project/src/sample/save.txt"));
             out.writeObject(gs);
         }
         catch (Exception e){
@@ -51,6 +52,7 @@ public class Main1 extends Application {
             }
         }
         */
+
 
     }
 

@@ -12,7 +12,7 @@ public class Level2 extends LevelStatus {
     {
         int no=10;
         HashMap<Integer,Integer> mp=new HashMap<>();
-        mp.put(1,10);mp.put(2,5);
+        mp.put(1,10);mp.put(2,2);
 
         return new Level2(mp,20);
     }

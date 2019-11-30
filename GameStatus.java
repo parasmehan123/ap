@@ -35,7 +35,7 @@ public class GameStatus implements Serializable
     {
         this.level = level;
         this.player = player;
-        this.sun_tokens_collected = 0;
+        this.sun_tokens_collected = 2;
         this.zombies = new ArrayList<>();
         this.plants = new ArrayList<>();
         this.peas = new ArrayList<>();
@@ -143,4 +143,10 @@ public class GameStatus implements Serializable
     public int getPrice(String na){
         return this.price.get(na);
     }
+
+    public String getPlayer() {
+        return this.player;
+    }
+
+    public double getProgress(){return (1-this.level.getProgress())*100;}
 }

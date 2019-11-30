@@ -1,11 +1,9 @@
 package sample;
 
-import org.omg.PortableInterceptor.INACTIVE;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class LevelStatus implements Serializable {
 
@@ -44,6 +42,14 @@ public class LevelStatus implements Serializable {
             }
         }
         return flag;
+    }
+
+    public double getProgress(){
+        final double[] remaining = {0};
+        rem.forEach((k,v)->{
+            remaining[0] +=v;
+        });
+        return  remaining[0] /(10+num*2);
     }
 
 }
