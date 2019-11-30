@@ -163,9 +163,9 @@
                   </HBox>
                </children>
             </StackPane>
-            <Button ellipsisString="" layoutX="1000.0" layoutY="25.0" mnemonicParsing="false" onAction="#pause_button_clicked" prefHeight="61.0" prefWidth="120.0" style="-fx-background-color: transparent;">
+            <Button ellipsisString="" layoutX="850.0" layoutY="25.0" mnemonicParsing="false" onAction="#pause_button_clicked" prefHeight="61.0" prefWidth="120.0" style="-fx-background-color: transparent;">
                <graphic>
-                  <ImageView fitHeight="83.0" fitWidth="97.0" pickOnBounds="true">
+                  <ImageView fitHeight="83.0" fitWidth="114.0" pickOnBounds="true">
                      <image>
                         <Image url="@images/circled-pause.png" />
                      </image>
@@ -173,6 +173,15 @@
                </graphic>
             </Button>
             <ProgressBar fx:id="progress_bar" layoutX="293.0" layoutY="30.0" prefHeight="27.0" prefWidth="306.0" progress="0.0" />
+            <Button ellipsisString="" layoutX="1000.0" layoutY="25.0" mnemonicParsing="false" onAction="#exit_game_button_pressed" prefHeight="61.0" prefWidth="120.0" style="-fx-background-color: transparent;">
+               <graphic>
+                  <ImageView fitHeight="83.0" fitWidth="162.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@images/EXIT_BUTTON.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </children>

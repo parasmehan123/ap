@@ -22,7 +22,7 @@ public class Pea implements Serializable {
     public Pea(int x,int y){
         this.x = x;
         this.y = y;
-        damage = 20;
+        damage = 15;
     }
 
     public boolean CheckCollision(ArrayList<Zombie> arr, ImageView pi){

@@ -62,15 +62,7 @@ public class Main2{
             public void handle(long now) {
                 try {
                     if (!save_flag) {
-                        System.out.println("saved");
-                        try {
-                            serialize(game);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (ClassNotFoundException e) {
-                            e.printStackTrace();
-                        }
-                        stop();
+                        throw new PauseGameException("");
                     }
                     if ((now - star[0]) > 10e9) {
                         SunToken.sky();
@@ -119,10 +111,32 @@ public class Main2{
                     move_lawn_mover(5);
                     move_pea(4);
                     PlayGameController.setProgress(level.getProgress());
+                    check_won(level);
+                    //throw new GameWonException("");
                 } catch (GameLostException e)
                 {
                     System.out.println("Game Lost!!!!");
-                    statstage.close();
+                    //statstage.close();
+                    //TODO
+                    try {
+                        Main1.ob.show_screen("GameLostPage.fxml");
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                    stop();
+                }catch (GameWonException e)
+                {
+                    System.out.println("GAME WON!!!!!!!!!!!");
+                    //statstage.close();
+                    statgame.setFinish();
+                    try {
+                        Main1.ob.show_screen("GameWonPage.fxml");
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                    stop();
+                } catch (PauseGameException e) {
+                    System.out.println("Game Paused!!!!!!!");
                     stop();
                 }
             }
@@ -132,6 +146,11 @@ public class Main2{
 
     public static void initialise_play_game(){
 
+        zomb_im=new HashMap<Zombie,ImageView>();
+        pea_im=new HashMap<Pea,ImageView>();
+        ShouldZombieStop = new HashMap<Zombie, Boolean>();
+        moving_lawn_mover=new ArrayList<>();
+        save_flag=true;
         ArrayList<Zombie> zombie=statgame.getZombies();
         for(Zombie z:zombie)
         {
@@ -278,7 +297,7 @@ public class Main2{
             throw new GameLostException("");
     }
 
-    //TODO - not available
+
     public static void zombie_reached_home(int y) throws GameLostException {
         if(statgame.is_lm_available(y)){
             //System.out.println("Not called");
@@ -292,7 +311,6 @@ public class Main2{
         }
 
     }
-
 
     public static void remove_plant(Plant pl)
     {
@@ -456,6 +474,12 @@ public class Main2{
                 fn.close();
         }
         return reto;
+    }
+
+    public static void check_won(LevelStatus ob) throws GameWonException {
+        if(ob.getProgress()==0 && statgame.getZombies().size()==0)
+            throw new GameWonException("");
+
     }
 
 }

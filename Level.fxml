@@ -4,6 +4,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LevelController">
@@ -16,36 +17,40 @@
         <AnchorPane prefHeight="200.0" prefWidth="200.0">
             <children>
                 <Button ellipsisString="" layoutX="62.0" layoutY="879.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="159.0" prefWidth="150.0" style="-fx-background-color: transparent;" />
-                <AnchorPane layoutX="142.0" layoutY="212.0" prefHeight="534.0" prefWidth="1160.0">
+            <HBox layoutX="121.0" layoutY="314.0" prefHeight="139.0" prefWidth="819.0">
                <children>
-                  <Button ellipsisString="" layoutX="111.0" layoutY="38.0" mnemonicParsing="false" onAction="#level1" prefHeight="114.0" prefWidth="176.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#level1" prefHeight="138.0" prefWidth="477.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="l1" fitHeight="183.0" fitWidth="327.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="l1" fitHeight="128.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/level1.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button ellipsisString="" layoutX="585.0" layoutY="38.0" mnemonicParsing="false" onAction="#level2" prefHeight="114.0" prefWidth="176.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#level2" prefHeight="139.0" prefWidth="411.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="l2" fitHeight="250.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="l2" fitHeight="129.0" fitWidth="369.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/level2.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button ellipsisString="" layoutY="230.0" mnemonicParsing="false" onAction="#level3" prefHeight="114.0" prefWidth="176.0" style="-fx-background-color: transparent;">
+               </children>
+            </HBox>
+            <HBox layoutX="15.0" layoutY="521.0" prefHeight="141.0" prefWidth="1225.0">
+               <children>
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#level3" prefHeight="140.0" prefWidth="383.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <ImageView fx:id="l3" fitHeight="250.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="l3" fitHeight="130.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@images/level3.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button ellipsisString="" layoutX="414.0" layoutY="219.0" mnemonicParsing="false" onAction="#level4" prefHeight="114.0" prefWidth="176.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#level4" prefHeight="141.0" prefWidth="474.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fx:id="l4" fitHeight="250.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -54,7 +59,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button ellipsisString="" layoutX="754.0" layoutY="219.0" mnemonicParsing="false" onAction="#level5" prefHeight="114.0" prefWidth="176.0" style="-fx-background-color: transparent;">
+                  <Button ellipsisString="" mnemonicParsing="false" onAction="#level5" prefHeight="140.0" prefWidth="462.0" style="-fx-background-color: transparent;">
                      <graphic>
                         <ImageView fx:id="l5" fitHeight="250.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -63,18 +68,35 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <ImageView fx:id="st4" fitHeight="69.0" fitWidth="132.0" layoutX="646.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/stop.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="st41" fitHeight="69.0" fitWidth="132.0" layoutX="984.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/stop.png" />
-                     </image>
-                  </ImageView>
                </children>
-                </AnchorPane>
+            </HBox>
+            <Button ellipsisString="" mnemonicParsing="false" onAction="#level3" prefHeight="114.0" prefWidth="176.0" style="-fx-background-color: transparent;" />
+            <ImageView fx:id="stop1" fitHeight="66.0" fitWidth="73.0" layoutX="472.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/stop.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="stop2" fitHeight="66.0" fitWidth="73.0" layoutX="891.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/stop.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="stop3" fitHeight="66.0" fitWidth="73.0" layoutX="346.0" layoutY="474.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/stop.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="stop4" fitHeight="66.0" fitWidth="73.0" layoutX="747.0" layoutY="474.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/stop.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="stop5" fitHeight="66.0" fitWidth="73.0" layoutX="1171.0" layoutY="474.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/stop.png" />
+               </image>
+            </ImageView>
+            <Button ellipsisString="" layoutX="58.0" layoutY="880.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="159.0" prefWidth="158.0" style="-fx-background-color: transparent;" />
             </children></AnchorPane>
     </children>
 </StackPane>

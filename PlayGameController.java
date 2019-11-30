@@ -11,6 +11,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -186,9 +188,9 @@ public class PlayGameController implements Initializable {
     }
 
     @FXML
-    public void pause_button_clicked()
-    {
+    public void pause_button_clicked() throws IOException {
         Main2.save_flag=false;
+        Main1.ob.show_screen("PauseMenu.fxml");
     }
 
     public static void set_sun_tokens_display(int i)
@@ -198,4 +200,10 @@ public class PlayGameController implements Initializable {
 
     public static void setProgress(double i){
         stat_progress_bar.setProgress(i);}
+
+    @FXML
+    public void exit_game_button_pressed() throws IOException {
+        Main2.save_flag=false;
+        Main1.ob.show_screen("MainMenu.fxml");
+    }
 }

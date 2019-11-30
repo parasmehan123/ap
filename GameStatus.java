@@ -27,6 +27,8 @@ public class GameStatus implements Serializable
 
     private ArrayList<Boolean> lawn_mover;
 
+    private boolean finish;
+
     public int getNum(){
         return this.get_level().getNum();
     }
@@ -54,6 +56,7 @@ public class GameStatus implements Serializable
         price.put("Walnut", 2);
         price.put("Cherrybomb", 6);
         price.put("SunFlower", 2);
+        this.finish=false;
 
     }
 
@@ -149,4 +152,13 @@ public class GameStatus implements Serializable
     }
 
     public double getProgress(){return (1-this.level.getProgress())*100;}
+
+    public void setFinish() {
+        this.finish = true;
+    }
+
+    public boolean isFinish() {
+        return finish;
+    }
+
 }

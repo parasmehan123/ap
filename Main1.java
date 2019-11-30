@@ -23,21 +23,26 @@ public class Main1 extends Application {
 
     public static Stage stat_primaryStage;
 
+    public static Main1 ob=new Main1();
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         BufferedReader br = new BufferedReader(new FileReader("/Users/pawanmehan/ap_project/src/sample/path.txt"));
         path=br.readLine();
-
         stat_primaryStage=primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("LoadGame.fxml"));
-        primaryStage.setTitle("PlantsVsZombies");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
-        primaryStage.setResizable(false);
+        ob.show_screen("MainMenu.fxml");
 
     }
 
+    public void show_screen(String str) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(str));
+        stat_primaryStage.setTitle("PlantsVsZombies");
+        stat_primaryStage.setScene(new Scene(root));
+        stat_primaryStage.show();
+        stat_primaryStage.setResizable(false);
+    }
+    //TODO - PEA
 
     public static void main(String[] args)throws IOException {
         launch(args);

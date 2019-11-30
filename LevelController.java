@@ -21,79 +21,63 @@ import java.util.ResourceBundle;
 public class LevelController implements Initializable{
 
     @FXML
-    private ImageView background,st1,st2,st3,st4,st5,l1,l2,l3,l4,l5;
+    private ImageView stop1,stop2,stop3,stop4,stop5;
 
-    @FXML
-    private Button back;
+    private int n;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        try
-//        {
-//            FileInputStream fn1=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/LEVEL_PAGE.png");
-//            background.setImage(new Image(fn1));
-//            FileInputStream lev1=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/level1.png");
-//            l1.setImage(new Image(lev1));
-//            FileInputStream lev2=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/level2.png");
-//            l2.setImage(new Image(lev2));
-//            FileInputStream lev3=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/level3.png");
-//            l3.setImage(new Image(lev3));
-//            FileInputStream lev4=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/level4.png");
-//            l4.setImage(new Image(lev4));
-//            FileInputStream lev5=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/level5.png");
-//            l5.setImage(new Image(lev5));
-//            FileInputStream stop=new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/stop.png");
-////            st2.setImage(new Image(stop));
-////            st3.setImage(new Image(stop));
-//            st4.setImage(new Image(stop));
-////            st5.setImage(new Image(stop));
-//
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            n = Main2.statgame.get_level().getNum();
+            if(Main2.statgame.isFinish())
+                n+=1;
+        }catch (NullPointerException e){n=1;}
+
+        stop1.setVisible(false);
+        if(n>=2)
+            stop2.setVisible(false);
+        if(n>=3)
+            stop3.setVisible(false);
+        if(n>=4)
+            stop4.setVisible(false);
+        if(n>=5)
+            stop5.setVisible(false);
     }
 
     @FXML
-    private void level1(ActionEvent event) throws IOException
+    private void level1(ActionEvent event) throws Exception
     {
-//        Parent root= FXMLLoader.load(getClass().getResource("PlayGame.fxml"));
-//        Scene sc=new Scene(root);
-//        Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-//        Main_window.setScene(sc);
-//        Main_window.show();
+        if(n>=1)
+            Main2.ob.play_game(new GameStatus(Main2.statgame.getPlayer(),Level1.getInstance()));
     }
 
     @FXML
-    private void level2()
-    {
-        System.out.println("2");
+    private void level2() throws Exception {
+        if(n>=2)
+            Main2.ob.play_game(new GameStatus(Main2.statgame.getPlayer(),Level2.getInstance()));
     }
 
     @FXML
-    private void level3()
-    {
-        System.out.println("3");
+    private void level3() throws Exception {
+        if(n>=3)
+            Main2.ob.play_game(new GameStatus(Main2.statgame.getPlayer(),Level3.getInstance()));
     }
 
     @FXML
-    private void level4()
-    {
-        System.out.println("4");
+    private void level4() throws Exception {
+        if(n>=4)
+            Main2.ob.play_game(new GameStatus(Main2.statgame.getPlayer(),Level4.getInstance()));
     }
 
     @FXML
-    private void level5()
-    {
-        System.out.println("5");
+    private void level5() throws Exception {
+        if(n==5)
+            Main2.ob.play_game(new GameStatus(Main2.statgame.getPlayer(),Level5.getInstance()));
     }
 
     @FXML
     private void backPressed(ActionEvent event) throws IOException
     {
-        Parent root= FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
-        Scene sc=new Scene(root);
-        Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Main_window.setScene(sc);
-        Main_window.show();
+        Main1.ob.show_screen("MainMenu.fxml");
     }
 }

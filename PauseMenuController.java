@@ -12,19 +12,49 @@ import java.util.ResourceBundle;
 
 public class PauseMenuController implements Initializable {
 
-    @FXML
-    private ImageView background,savegame,restartlevel,resumegame,exitgame;
-
+    public boolean save_flag;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //
-        //        try {
-        //            FileInputStream fn1 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/PAUSE_MENU.png"), fn2 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/SAVE_GAME_BUTTON.png"), fn3 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/RESTART_LEVL.png"), fn4 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/RESUME_GAME.png"), fn5 = new FileInputStream("/home/parasmehan123/IdeaProjects/fx1/src/sample/images/EXIT_BUTTON.png");
-        //            background.setImage(new Image(fn1));
-        //            savegame.setImage(new Image(fn2));
-        //            restartlevel.setImage(new Image(fn3));
-        //            resumegame.setImage(new Image(fn4));
-        //            exitgame.setImage(new Image(fn5));
-        //        }catch (IOException e){}
+        save_flag=true;
+    }
+
+    @FXML
+    private void save_game() throws IOException, ClassNotFoundException {
+        if(save_flag)
+        {
+            Main2.serialize(Main2.statgame);
+            System.out.println("Game Saved!!!!!!!!!!");
+            save_flag=false;
+        }
+        else
+            System.out.println("Game not saved - already saved!!!!!");
+
+    }
+
+    @FXML
+    private void restart_level() throws Exception {
+        LevelStatus l=Main2.statgame.get_level();
+        GameStatus new_game=null;
+        if(l.getNum()==1)
+            new_game=new GameStatus(Main2.statgame.getPlayer(),Level1.getInstance());
+        else if(l.getNum()==2)
+            new_game=new GameStatus(Main2.statgame.getPlayer(),Level2.getInstance());
+        else if(l.getNum()==3)
+            new_game=new GameStatus(Main2.statgame.getPlayer(),Level3.getInstance());
+        else if(l.getNum()==4)
+            new_game=new GameStatus(Main2.statgame.getPlayer(),Level4.getInstance());
+        else
+            new_game=new GameStatus(Main2.statgame.getPlayer(),Level5.getInstance());
+        Main2.ob.play_game(new_game);
+    }
+
+    @FXML
+    private void resume_game() throws Exception {
+        Main2.ob.play_game(Main2.statgame);
+    }
+
+    @FXML
+    private void exit_game() throws IOException {
+        Main1.ob.show_screen("MainMenu.fxml");
     }
 }
