@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -146,9 +147,9 @@
                         <Image url="@images/wood.png" />
                      </image>
                   </ImageView>
-                  <HBox prefHeight="102.0" prefWidth="200.0">
+                  <HBox prefHeight="0.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="68.0" fitWidth="76.0" pickOnBounds="true">
+                        <ImageView fitHeight="65.0" fitWidth="76.0" pickOnBounds="true">
                            <image>
                               <Image url="@images/suntoken.png" />
                            </image>
@@ -171,6 +172,7 @@
                   </ImageView>
                </graphic>
             </Button>
+            <ProgressBar fx:id="progress_bar" layoutX="293.0" layoutY="30.0" prefHeight="27.0" prefWidth="306.0" progress="0.0" />
          </children>
       </AnchorPane>
    </children>

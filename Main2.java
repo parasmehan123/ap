@@ -1,20 +1,12 @@
 package sample;
-import com.sun.xml.internal.ws.message.saaj.SAAJHeader;
+
 import javafx.animation.AnimationTimer;
-import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -107,7 +99,6 @@ public class Main2 extends Application {
                     statgame.one_second();
                     PlayGameController.handle_plants_button(statgame.which_plants_available());
                     spawn_sun_tokens();
-
                     star[1]= now;
                 }
                 if(now-star[2]>level.getTime()*1e9)
