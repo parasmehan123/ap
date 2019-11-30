@@ -6,6 +6,7 @@ public class Level1 extends LevelStatus {
 
     protected Level1(HashMap<Integer,Integer> rem,int time)
     {
+
         super(rem,time, 1);
     }
 
