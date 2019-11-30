@@ -30,6 +30,7 @@ public class GameStatus implements Serializable
     public int getNum(){
         return this.get_level().getNum();
     }
+
     GameStatus(String player, LevelStatus level)
     {
         this.level = level;
@@ -55,7 +56,6 @@ public class GameStatus implements Serializable
         price.put("SunFlower", 2);
 
     }
-
 
     public ArrayList<Zombie> getZombies() {
         return this.zombies;
