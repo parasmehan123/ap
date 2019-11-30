@@ -34,6 +34,6 @@ public class InstructionsController implements Initializable {
     @FXML
     private void frontPressed() throws IOException
     {
-        Main1.ob.show_screen("Instructions2.fxml");
+        Main1.ob.show_screen("Instructions3.fxml");
     }
 }
