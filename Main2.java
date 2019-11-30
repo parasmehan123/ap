@@ -86,7 +86,7 @@ public class Main2{
                                 yf = y + 1;
                             }
                         }
-                        spawn_zombie(1000, rand.nextInt(5), yf, null);
+                        spawn_zombie(500+rand.nextInt(500), rand.nextInt(5), yf, null);
                         mp.put(yf, mp.get(yf) - 1);
                         star[2] = now;
                     }
@@ -233,9 +233,9 @@ public class Main2{
         if(zm==null)
         {
             if(type==1)
-                zm = new Zombie(x, y, 100, 8,1);
+                zm = new Zombie(x, y, 100, 20,1);
             else if(type==2)
-                zm = new Zombie(x, y, 150, 10,2);
+                zm = new Zombie(x, y, 150, 30,2);
             statgame.addZombie(zm);
         }
 
@@ -254,7 +254,6 @@ public class Main2{
         PlayGameController.statmain.getChildren().add(iv);
         ShouldZombieStop.put(zm, false);
     }
-
 
     public static void spawn_pea(int x,int y,Pea pea)
     {
@@ -296,7 +295,6 @@ public class Main2{
         if(game_lost[0])
             throw new GameLostException("");
     }
-
 
     public static void zombie_reached_home(int y) throws GameLostException {
         if(statgame.is_lm_available(y)){
