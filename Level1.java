@@ -5,7 +5,9 @@ import java.util.HashMap;
 public class Level1 extends LevelStatus {
 
     protected Level1(HashMap<Integer,Integer> rem,int time)
-
+    {
+        super(rem,time, 1);
+    }
     public static Level1 getInstance()
     {
         int no=10;

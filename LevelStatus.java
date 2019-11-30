@@ -47,4 +47,9 @@ public class LevelStatus implements Serializable {
     public void setProgress(double progress) {
         this.progress = progress;
     }
+
+    public int getNum() {
+        return num;
+    }
+
 }
