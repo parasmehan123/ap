@@ -71,15 +71,10 @@ public class LoadGameController implements Initializable{
     }
 
     @FXML
-    private void continuePressed(ActionEvent event) throws IOException
+    private void continuePressed(ActionEvent event) throws Exception
     {
-        Parent root= FXMLLoader.load(getClass().getResource("Level.fxml"));
-        Scene sc=new Scene(root);
-        Stage Main_window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Main_window.setScene(sc);
-        Main_window.show();
         GameStatus selected=(GameStatus) table.getSelectionModel().getSelectedItem();
-        System.out.println("Player with rank " + selected.getPlayer() + " selected.");
+        Main2.ob.play_game(selected);
     }
 
     @FXML

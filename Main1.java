@@ -18,10 +18,18 @@ import java.util.ArrayList;
 
 public class Main1 extends Application {
 
+    public static String path;
+
+
+    public static Stage stat_primaryStage;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        BufferedReader br = new BufferedReader(new FileReader("/Users/pawanmehan/ap_project/src/sample/path.txt"));
+        path=br.readLine();
+
+        stat_primaryStage=primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("LoadGame.fxml"));
         primaryStage.setTitle("PlantsVsZombies");
         primaryStage.setScene(new Scene(root));
@@ -33,7 +41,6 @@ public class Main1 extends Application {
 
     public static void main(String[] args)throws IOException {
         launch(args);
-
 
 
         /*
@@ -51,7 +58,10 @@ public class Main1 extends Application {
                 out.close();
             }
         }
-        */
+
+         */
+
+
 
 
     }

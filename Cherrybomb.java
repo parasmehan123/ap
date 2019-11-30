@@ -12,7 +12,7 @@ public class Cherrybomb extends Plant {
 
     static
     {
-        String path=Main2.path;
+        String path=Main1.path;
         im=Helper.getImage(path+"Cherrybomb.png");
     }
     public Cherrybomb(int x, int y)

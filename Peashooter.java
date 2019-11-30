@@ -8,7 +8,7 @@ public class Peashooter extends Plant {
 
     static
     {
-        String path=Main2.path;
+        String path=Main1.path;
         im1=Helper.getImage(path+"PeaShooter_Idle1.gif");
         im2=Helper.getImage(path+"PeaShooter_Spit.gif");
         pea=Helper.getImage(path+"ProjectilePea.png");

@@ -13,7 +13,7 @@ public class SunToken {
 
     static
     {
-        String path=Main2.path;
+        String path=Main1.path;
         im=Helper.getImage(path+"suntoken.png");
     }
 

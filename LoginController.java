@@ -31,7 +31,7 @@ public class LoginController implements Initializable {
     }
 
     @FXML
-    private void continuePressed(ActionEvent event) throws IOException
+    private void continuePressed(ActionEvent event) throws Exception
     {
         Parent root= FXMLLoader.load(getClass().getResource("Level.fxml"));
         Scene sc=new Scene(root);
@@ -46,7 +46,8 @@ public class LoginController implements Initializable {
                 break;
         }
         GameStatus new_game=new GameStatus(text,Level1.getInstance());
-        Main2.play_game(new_game);
+
+        Main2.ob.play_game(new_game);
     }
 
     @FXML

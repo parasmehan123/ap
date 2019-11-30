@@ -13,11 +13,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class Main2 extends Application {
+public class Main2{
 
     public static Stage statstage;
-
-    public static String path;
 
     public static GameStatus statgame;
 
@@ -31,117 +29,104 @@ public class Main2 extends Application {
 
     public static boolean save_flag=true;
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+    public static Main2 ob=new Main2();
+
+
+    public void play_game(GameStatus game) throws Exception {
 
         //TODO - save lawn mover
 
-        BufferedReader br = new BufferedReader(new FileReader("/Users/pawanmehan/ap_project/src/sample/path.txt"));
-        path=br.readLine();
-
-        ArrayList<GameStatus> save=deserialise();
-        GameStatus game=null;
-        if(save.size()==0)
-        {
-            System.out.println("YES1");
-            game=new GameStatus("Player",Level5.getInstance());
-            save.add(game);
-        }
-        else
-        {
-            game=save.get(0);
-            System.out.println(game.getZombies().size());
-            System.out.println("now i am called");
-        }
-
         statgame=game;
         System.out.println("No of tokens:"+game.getSun_tokens_collected());
+        System.out.println("Player Name:"+game.getPlayer());
+        System.out.println("Progress:"+game.getProgress());
+        System.out.println("Level:"+game.get_level().getNum());
 
         Parent root=FXMLLoader.load(getClass().getResource("PlayGame.fxml"));
-        primaryStage.setTitle("PlantsVsZombies");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.setResizable(false);
+        Main1.stat_primaryStage.setTitle("PlantsVsZombies");
+        Main1.stat_primaryStage.setScene(new Scene(root));
+        Main1.stat_primaryStage.setResizable(false);
 
-        statstage=primaryStage;
+        statstage=Main1.stat_primaryStage;
 
         initialise_play_game();
-        primaryStage.show();
+        Main1.stat_primaryStage.show();
         LevelStatus level=game.get_level();
         //spawn_pea(0,1);
 
-        long tmp=System.nanoTime();
-        final long[] star = {tmp,tmp,tmp,tmp,tmp};
-        new AnimationTimer()
-        {
+        long tmp = System.nanoTime();
+        final long[] star = {tmp, tmp, tmp, tmp, tmp};
+        new AnimationTimer() {
 
             @Override
             public void handle(long now) {
-
-                if(!save_flag)
-                {
-                    System.out.println("saved");
-                    try {
-                        serialize(save);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
+                try {
+                    if (!save_flag) {
+                        System.out.println("saved");
+                        try {
+                            serialize(game);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                        stop();
                     }
+                    if ((now - star[0]) > 10e9) {
+                        SunToken.sky();
+                        star[0] = now;
+                        cherry_bomb_blast();
+
+                    }
+                    if ((now - star[1] > 1e9)) {
+                        statgame.one_second();
+                        PlayGameController.handle_plants_button(statgame.which_plants_available());
+                        spawn_sun_tokens();
+                        star[1] = now;
+                    }
+                    if (now - star[2] > level.getTime() * 1e9) {
+                        Map<Integer, Integer> mp = level.getMap();
+                        Random rand = new Random();
+                        int yf = -1;
+                        while (yf == -1 && level.isZombieAvailable()) {
+                            //                        spawn_zombie(rand.nextInt(5)5);
+                            int y = rand.nextInt(2);
+                            if (mp.containsKey(y + 1) && mp.get(y + 1) > 0) {
+                                yf = y + 1;
+                            }
+                        }
+                        spawn_zombie(1000, rand.nextInt(5), yf, null);
+                        mp.put(yf, mp.get(yf) - 1);
+                        star[2] = now;
+                    }
+                    if (now - star[3] > 1e9) {
+                        peashooting();
+                        star[3] = now;
+                    }
+
+                    move_zombies(0.5);
+
+                    ArrayList<Pea> tmp2 = new ArrayList<>();
+                    pea_im.forEach((k, v) -> {
+                        if (k.CheckCollision(statgame.getZombies(), v))
+                            tmp2.add(k);
+                    });
+
+                    for (Pea tmp3 : tmp2)
+                        pea_im.remove(tmp3);
+
+                    ZombieCollideWithPLant(statgame.getPlants(), statgame.getZombies());
+                    move_lawn_mover(5);
+                    move_pea(4);
+                    PlayGameController.setProgress(level.getProgress());
+                } catch (GameLostException e)
+                {
+                    System.out.println("Game Lost!!!!");
+                    statstage.close();
                     stop();
                 }
-                if((now - star[0]) > 10e9) {
-                    SunToken.sky();
-                    star[0] = now;
-                    cherry_bomb_blast();
-
-                }
-                if((now-star[1]>1e9)){
-                    statgame.one_second();
-                    PlayGameController.handle_plants_button(statgame.which_plants_available());
-                    spawn_sun_tokens();
-                    star[1]= now;
-                }
-                if(now-star[2]>level.getTime()*1e9)
-                {
-                    Map<Integer,Integer> mp=level.getMap();
-                    Random rand=new Random();
-                    int yf = -1;
-                    while(yf == -1 && level.isZombieAvailable())
-                    {
-//                        spawn_zombie(rand.nextInt(5)5);
-                        int y = rand.nextInt(2);
-                        if(mp.containsKey(y+1) && mp.get(y+1)>0){
-                            yf = y+1;
-                        }
-                    }
-                    spawn_zombie(1000,rand.nextInt(5), yf,null);
-                    mp.put(yf, mp.get(yf)-1);
-                    star[2]=now;
-                }
-                if(now-star[3]>1e9)
-                {
-                    peashooting();
-                    star[3]=now;
-                }
-
-                move_zombies(0.5);
-
-                ArrayList<Pea> tmp2=new ArrayList<>();
-                pea_im.forEach((k,v)->{
-                    if (k.CheckCollision(statgame.getZombies(), v))
-                        tmp2.add(k);
-                });
-
-                for(Pea tmp3: tmp2)
-                    pea_im.remove(tmp3);
-
-                ZombieCollideWithPLant(statgame.getPlants(), statgame.getZombies());
-                move_lawn_mover(5);
-                move_pea(4);
-                PlayGameController.setProgress(level.getProgress());
             }
         }.start();
-
     }
 
 
@@ -272,29 +257,42 @@ public class Main2 extends Application {
 
     }
 
-    public static void move_zombies(double delta)
+    public static void move_zombies(double delta) throws GameLostException
     {
+        final boolean[] game_lost = {false};
         zomb_im.forEach((k,v)->{
             if(!ShouldZombieStop.get(k)) {
                 v.setLayoutX(v.getLayoutX() - delta);
-                if(v.getLayoutX()<=225)
-                    zombie_reached_home(k.getY());
+                if(v.getLayoutX()<=225) {
+                    try {
+                        zombie_reached_home(k.getY());
+                    } catch (GameLostException e) {
+                        //e.printStackTrace();
+                        game_lost[0] =true;
+                    }
+                }
                 k.setX((int) v.getLayoutX());
             }
         });
+        if(game_lost[0])
+            throw new GameLostException("");
     }
 
     //TODO - not available
-    public static void zombie_reached_home(int y)
-    {
+    public static void zombie_reached_home(int y) throws GameLostException {
         if(statgame.is_lm_available(y)){
+            //System.out.println("Not called");
             moving_lawn_mover.add(PlayGameController.get_lawn_mover(y));
             statgame.remove_availability(y);
         }
         else
-            System.out.println("GAME LOST");
+        {
+            //System.out.println("GAME LOST");
+            throw new GameLostException("");
+        }
 
     }
+
 
     public static void remove_plant(Plant pl)
     {
@@ -335,8 +333,11 @@ public class Main2 extends Application {
             ArrayList<Zombie> ar=statgame.getZombies();
             for(int j=ar.size()-1;j>=0;j--)
             {
-                if(ar.get(j).getY()==lawnX.getY() && ar.get(j).getX()<=lawnX.getIm().getLayoutX())
+                if(ar.get(j).getY()==lawnX.getY() && ar.get(j).getX()<=lawnX.getIm().getLayoutX()+50)
+                {
                     remove_zombie(ar.get(j));
+                    //System.out.println("Zombie not removed");
+                }
             }
 
         }
@@ -409,7 +410,7 @@ public class Main2 extends Application {
                 }
                 if(flag) {
                     int x1 = 330 + 90 * pl.getX(), y1 = 130 + 120 * pl.getY();
-                    System.out.println(y1 + " " + x1);
+                    //System.out.println(y1 + " " + x1);
                     spawn_pea(pl.getX(), pl.getY(), null);
                     PlayGameController.ln.plants.get(pl.getY()).get(pl.getX()).setImage(Peashooter.im2);
                 }
@@ -420,41 +421,41 @@ public class Main2 extends Application {
         }
     }
 
-    public static void serialize(ArrayList<GameStatus> gs) throws IOException, ClassNotFoundException {
+    public static void serialize(GameStatus gs) throws IOException, ClassNotFoundException {
         ObjectOutputStream out = null;
+        FileOutputStream fn=null;
         try{
-            out = new ObjectOutputStream( new FileOutputStream("/Users/pawanmehan/ap_project/src/sample/save.txt"));
-            out.writeObject(gs);
+            ArrayList<GameStatus> ar=deserialise();
+            //System.out.println("ar size "+ar.size());
+            fn=new FileOutputStream("/Users/pawanmehan/ap_project/src/sample/save.txt");
+            out = new ObjectOutputStream(fn);
+            ar.add(gs);
+            out.writeObject(ar);
         }
         finally {
             if(out!= null)
-            out.close();
+                out.close();
+            if(fn!=null)
+                fn.close();
         }
     }
 
     public static ArrayList<GameStatus> deserialise() throws IOException, ClassNotFoundException{
         ArrayList<GameStatus> reto = null;
         ObjectInputStream in = null;
+        FileInputStream fn=new FileInputStream("/Users/pawanmehan/ap_project/src/sample/save.txt");
         try{
-            in = new ObjectInputStream(new FileInputStream("/Users/pawanmehan/ap_project/src/sample/save.txt"));
+            in = new ObjectInputStream(fn);
             reto = (ArrayList<GameStatus>)in.readObject();
         }
         finally {
             if(in!=null){
                 in.close();
             }
+            if(fn!=null)
+                fn.close();
         }
         return reto;
-    }
-
-    //TODO
-    public static void play_game(GameStatus game)
-    {
-
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 
 }

@@ -15,7 +15,7 @@ public class SunFlower extends Plant {
 
     static
     {
-        String path=Main2.path;
+        String path=Main1.path;
         im=Helper.getImage(path+"Sunflower_transparent.gif");
     }
 

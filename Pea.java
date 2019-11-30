@@ -14,7 +14,7 @@ public class Pea implements Serializable {
     public static Image im;
 
     static {
-        String path = Main2.path;
+        String path = Main1.path;
         im = Helper.getImage(path + "ProjectilePea.png");
 
     }
