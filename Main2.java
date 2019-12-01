@@ -419,7 +419,7 @@ public class Main2{
             {
                 boolean flag = false;
                 for(int j = 0; j<statgame.getZombies().size(); j++){
-                    if(statgame.getZombies().get(j).getY()== pl.getY()) {
+                    if(statgame.getZombies().get(j).getY()== pl.getY() && (320 + 90 * pl.getX() - statgame.getZombies().get(j).getX()) < 160) {
                         flag = true;
                         break;
                     }
